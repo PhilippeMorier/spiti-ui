@@ -1,20 +1,21 @@
 pipeline {
     agent any
-
     stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
+        stage('unit test') {
+            agent {
+                docker {
+                    image 'spiti-node'
+                }
             }
-        }
-        stage('Test') {
             steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+                git url: 'https://github.com/PhilippeMorier/spiti-ui.git'
+                sh 'npm -v && node -v'
+                sh 'whoami'
+                sh 'printenv | more | grep "CHROME_BIN\|FIREFOX_BIN"'
+                // sh 'google-chrome --version'
+                sh 'npm install --verbose'
+                // sh 'npm rebuild node-sass --force'
+                sh 'npm run test -- --single-run'
             }
         }
     }
