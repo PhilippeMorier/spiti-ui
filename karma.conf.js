@@ -38,6 +38,7 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
+    // https://github.com/karma-runner/karma-chrome-launcher/issues/83#issuecomment-280423282
     browsers: ['HeadlessChrome'],
     customLaunchers: {
       HeadlessChrome: {
