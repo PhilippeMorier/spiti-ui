@@ -8,6 +8,7 @@ module.exports = function (config) {
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
+      require('karma-firefox-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage-istanbul-reporter'),
       require('@angular/cli/plugins/karma')
@@ -39,7 +40,7 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     // https://github.com/karma-runner/karma-chrome-launcher/issues/83#issuecomment-280423282
-    browsers: ['HeadlessChrome'],
+    browsers: ['HeadlessChrome', 'Firefox'],
     customLaunchers: {
       HeadlessChrome: {
         base: 'Chrome',
