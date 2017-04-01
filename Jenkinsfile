@@ -11,7 +11,7 @@ pipeline {
                 git url: 'https://github.com/PhilippeMorier/spiti-ui.git'
                 sh 'npm -v && node -v'
                 sh 'whoami'
-                sh 'printenv | more | grep "*_BIN"'
+                sh 'printenv | more'
                 // sh 'google-chrome --version'
                 sh 'npm install --verbose'
                 // sh 'npm rebuild node-sass --force'
