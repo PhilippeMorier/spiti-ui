@@ -8,12 +8,20 @@ exports.config = {
   specs: [
     './e2e/**/*.e2e-spec.ts'
   ],
-  capabilities: {
+  // capabilities: {
+  //   'browserName': 'chrome',
+  //   'chromeOptions': {
+  //     'args': ['headless', 'no-sandbox']
+  //   }
+  // },
+  multiCapabilities: [{
+    'browserName': 'firefox'
+  }, {
     'browserName': 'chrome',
     'chromeOptions': {
       'args': ['headless', 'no-sandbox']
     }
-  },
+  }],
   directConnect: true,
   baseUrl: 'http://localhost:4200/',
   framework: 'jasmine',
