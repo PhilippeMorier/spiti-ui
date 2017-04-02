@@ -1,21 +1,28 @@
 pipeline {
     agent any
+
     stages {
-        stage('unit test') {
-            agent {
-                docker {
-                    image 'spiti-node'
-                }
-            }
+        stage('git') {
+            agent any
             steps {
                 git url: 'https://github.com/PhilippeMorier/spiti-ui.git'
-                sh 'npm -v && node -v'
-                sh 'whoami'
-                sh 'printenv | more'
-                // sh 'google-chrome --version'
-                sh 'npm install --verbose'
-                // sh 'npm rebuild node-sass --force'
-                sh 'npm run test -- --single-run'
+            }
+        }
+        stage('unit test') {
+            agent { docker 'spiti-node' }
+            steps {
+                ansiColor('xterm') {
+                    sh 'npm install'
+                    sh 'npm run test -- --single-run'
+                }
+            }
+        }
+        stage('e2e test') {
+            agent { docker 'spiti-node' }
+            steps {
+                ansiColor('xterm') {
+                    sh 'npm run e2e'
+                }
             }
         }
     }
