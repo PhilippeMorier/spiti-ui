@@ -8,20 +8,21 @@ exports.config = {
   specs: [
     './e2e/**/*.e2e-spec.ts'
   ],
-  // capabilities: {
-  //   'browserName': 'chrome',
-  //   'chromeOptions': {
-  //     'args': ['headless', 'no-sandbox']
-  //   }
-  // },
-  multiCapabilities: [{
-    'browserName': 'firefox'
-  }, {
+  capabilities: {
     'browserName': 'chrome',
     'chromeOptions': {
       'args': ['headless', 'no-sandbox']
     }
-  }],
+  },
+  // Disabled Firefox due: https://github.com/mozilla/geckodriver/issues/529
+  // multiCapabilities: [{
+  //   'browserName': 'firefox'
+  // }, {
+  //   'browserName': 'chrome',
+  //   'chromeOptions': {
+  //     'args': ['headless', 'no-sandbox']
+  //   }
+  // }],
   directConnect: true,
   baseUrl: 'http://localhost:4200/',
   framework: 'jasmine',
