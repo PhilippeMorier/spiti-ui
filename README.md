@@ -1,7 +1,7 @@
 # SpitiUi
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.2
-by using `ng new spiti-ui --prefix spt --style scss --skip-git true --ng4 true --routing true` as command.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0
+by using `ng new spiti-ui --prefix spt --style scss --skip-git true --routing true` as command.
 
 ## Development server
 
