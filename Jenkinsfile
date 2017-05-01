@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+       SLACK_MESSAGE = $BUILD_NUMBER
+    }
+
     stages {
         stage('unit test') {
             agent { docker 'spiti-node' }
@@ -37,7 +41,7 @@ pipeline {
     }
     post {
         success {
-            slackSend(color: 'good', message: 'SUCCESS: Job "$JOB_NAME [$BUILD_NUMBER]" ($BUILD_URL)')
+            slackSend(color: 'good', message: 'SUCCESS: $SLACK_MESSAGE')
         }
     }
 }
