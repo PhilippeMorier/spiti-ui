@@ -37,7 +37,7 @@ pipeline {
     }
     post {
         success {
-            slackSend(color: 'good', message: 'SUCCESS: Job "JOB_NAME [$BUILD_NUMBER]" ($BUILD_URL)')
+            slackSend(color: 'good', message: 'SUCCESS: Job "$JOB_NAME [$BUILD_NUMBER]" ($BUILD_URL)')
         }
     }
 }
