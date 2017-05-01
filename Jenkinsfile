@@ -41,7 +41,7 @@ pipeline {
     }
     post {
         success {
-            slackSend(color: 'good', message: 'SUCCESS: $SLACK_MESSAGE')
+            script { slackSend(color: 'good', message: 'SUCCESS: $SLACK_MESSAGE $BUILD_NUMBER') }
         }
     }
 }
