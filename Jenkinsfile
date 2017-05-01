@@ -12,8 +12,8 @@ pipeline {
             }
         }
         post {
-            failure {
-                slackSend(color: '#FF0000', message: 'FAILED: Job "${env.JOB_NAME} [${env.BUILD_NUMBER}]" (${env.BUILD_URL})')
+            success {
+                slackSend(channel: '#spiti-ui-develop', color: 'good', message: 'SUCCESS: Job "${env.JOB_NAME} [${env.BUILD_NUMBER}]" (${env.BUILD_URL})')
             }
         }
         stage('e2e test') {
