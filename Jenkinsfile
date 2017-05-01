@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-       SLACK_MESSAGE = $BUILD_NUMBER
+       SLACK_MESSAGE = 'BUILD_NUMBER: $BUILD_NUMBER'
     }
 
     stages {
