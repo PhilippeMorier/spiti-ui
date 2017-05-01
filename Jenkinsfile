@@ -10,10 +10,10 @@ pipeline {
                     //sh 'npm run test -- --single-run'
                 }
             }
-        }
-        post {
-            success {
-                slackSend(channel: '#spiti-ui-develop', color: 'good', message: 'SUCCESS: Job "${env.JOB_NAME} [${env.BUILD_NUMBER}]" (${env.BUILD_URL})')
+            post {
+                success {
+                    slackSend(channel: '#spiti-ui-develop', color: 'good', message: 'SUCCESS: Job "${env.JOB_NAME} [${env.BUILD_NUMBER}]" (${env.BUILD_URL})')
+                }
             }
         }
         stage('e2e test') {
@@ -32,10 +32,10 @@ pipeline {
 
                 sh 'git checkout master'
 
-                sh 'echo "BUILD_NUMBER: $BUILD_NUMBER" > test5.txt'
-                sh 'git add test5.txt'
+                //sh 'echo "BUILD_NUMBER: $BUILD_NUMBER" > test5.txt'
+                //sh 'git add test5.txt'
 
-                sh 'git commit -m "update test.txt $BUILD_NUMBER"'
+                //sh 'git commit -m "update test.txt $BUILD_NUMBER"'
                 sh 'git push origin master'
             }
         }
