@@ -10,11 +10,6 @@ pipeline {
                     //sh 'npm run test -- --single-run'
                 }
             }
-            post {
-                success {
-                    slackSend(channel: '#spiti-ui-develop', color: 'good', message: 'SUCCESS: Job "${env.JOB_NAME} [${env.BUILD_NUMBER}]" (${env.BUILD_URL})')
-                }
-            }
         }
         stage('e2e test') {
             agent { docker 'spiti-node' }
@@ -38,6 +33,11 @@ pipeline {
                 //sh 'git commit -m "update test.txt $BUILD_NUMBER"'
                 sh 'git push origin master'
             }
+        }
+    }
+    post {
+        success {
+            slackSend(channel: '#spiti-ui-develop', color: 'good', message: 'SUCCESS: Job "${env.JOB_NAME} [${env.BUILD_NUMBER}]" (${env.BUILD_URL})')
         }
     }
 }
