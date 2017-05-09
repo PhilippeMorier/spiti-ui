@@ -26,8 +26,8 @@ pipeline {
         stage('commit') {
             agent { docker 'spiti-node' }
             steps {
-                sh 'git config user.name "PhilippeMorier"'
-                sh 'git config user.email "morier.dev@outlook.com"'
+                //sh 'git config user.name "PhilippeMorier"'
+                //sh 'git config user.email "morier.dev@outlook.com"'
 
                 //sh 'git checkout master'
 
@@ -35,6 +35,7 @@ pipeline {
                 //sh 'git add test5.txt'
 
                 //sh 'git commit -m "update test.txt $BUILD_NUMBER"'
+                sh 'git status'
                 sh 'git push'
             }
         }
