@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-       SLACK_MESSAGE = 'BUILD_NUMBER: $BUILD_NUMBER'
+       SLACK_MESSAGE = '<$JOB_URL|$JOB_NAME> (<$BUILD_URL|$BUILD_DISPLAY_NAME>)'
     }
 
     stages {
@@ -41,7 +41,10 @@ pipeline {
     }
     post {
         success {
-            script { slackSend(color: 'good', message: 'SUCCESS:' + env.JOB_NAME + '(' + env.BUILD_NUMBER + ')') }
+          slackSend(color: 'good', message: ':white_check_mark: ' + env.SLACK_MESSAGE)
+        }
+        failure {
+          slackSend(color: 'danger', message: ':x: ' + env.SLACK_MESSAGE)
         }
     }
 }
