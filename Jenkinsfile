@@ -36,7 +36,7 @@ pipeline {
 
                 //sh 'git commit -m "update test.txt $BUILD_NUMBER"'
                 sh 'git status'
-                sh 'git push'
+                sh 'git push origin master'
             }
         }
     }
