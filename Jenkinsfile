@@ -6,8 +6,8 @@ pipeline {
             agent { docker 'spiti-node' }
             steps {
                 ansiColor('xterm') {
-                    //sh 'npm install'
-                    //sh 'npm run test -- --single-run'
+                    sh 'npm install'
+                    sh 'npm run test -- --single-run'
                 }
             }
         }
@@ -15,7 +15,7 @@ pipeline {
             agent { docker 'spiti-node' }
             steps {
                 ansiColor('xterm') {
-                    //sh 'npm run e2e'
+                    sh 'npm run e2e'
                 }
             }
         }
