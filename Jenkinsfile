@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-       SLACK_MESSAGE = '<$JOB_URL|$JOB_NAME> (<$BUILD_URL|$BUILD_DISPLAY_NAME>)'
-    }
-
     stages {
         stage('unit test') {
             agent { docker 'spiti-node' }
@@ -42,10 +38,10 @@ pipeline {
     }
     post {
         success {
-          slackSend(color: 'good', message: ':white_check_mark: ' + env.SLACK_MESSAGE)
+          slackSend(color: 'good', message: ':white_check_mark: <' + env.JOB_URL + '|' + env.JOB_NAME + '> (<' + env.BUILD_URL + '|' + env.BUILD_DISPLAY_NAME + '>)')
         }
         failure {
-          slackSend(color: 'danger', message: ':x: ' + env.SLACK_MESSAGE)
+          slackSend(color: 'danger', message: ':x: <' + env.JOB_URL + '|' + env.JOB_NAME + '> failed')
         }
     }
 }
