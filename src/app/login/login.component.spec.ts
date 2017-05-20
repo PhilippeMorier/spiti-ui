@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MdIconModule } from '@angular/material';
+import { MdButtonModule, MdIconModule } from '@angular/material';
 
 import { LoginComponent } from './login.component';
 
@@ -10,7 +10,10 @@ describe('LoginComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
         declarations: [LoginComponent],
-        imports: [MdIconModule],
+        imports: [
+          MdButtonModule,
+          MdIconModule,
+        ],
       })
       .compileComponents();
   }));
