@@ -9,8 +9,8 @@ describe('LoginComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+        declarations: [LoginComponent],
         imports: [MdIconModule],
-        declarations: [LoginComponent]
       })
       .compileComponents();
   }));

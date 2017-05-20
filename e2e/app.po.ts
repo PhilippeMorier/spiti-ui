@@ -1,11 +1,12 @@
-import { browser, element, by } from 'protractor';
+import { browser, by, element } from 'protractor';
+import { promise } from 'selenium-webdriver';
 
 export class SpitiUiPage {
-  navigateTo() {
+  public navigateTo(): promise.Promise<void> {
     return browser.get('/');
   }
 
-  getParagraphText() {
+  public getParagraphText(): promise.Promise<string> {
     return element(by.css('spt-root h1')).getText();
   }
 }
