@@ -1,4 +1,23 @@
-<p>
-  <button md-raised-button>Raised button</button>
-  <md-icon>home</md-icon>
-</p>
+<md-card>
+  <md-card-header>
+    <md-card-title>
+      <md-icon>account_box</md-icon>
+      LOGIN
+    </md-card-title>
+    <md-card-subtitle>Please your credential to login in</md-card-subtitle>
+  </md-card-header>
+  <md-card-content>
+    <form class="example-form">
+      <md-input-container hintLabel="example@email.com">
+        <input mdInput type="email" placeholder="Email" required>
+      </md-input-container>
+      <md-input-container>
+        <input mdInput type="password" placeholder="Password" required>
+      </md-input-container>
+    </form>
+  </md-card-content>
+  <md-card-actions>
+    <button md-button>Cancel</button>
+    <button md-button>LOGIN</button>
+  </md-card-actions>
+</md-card>

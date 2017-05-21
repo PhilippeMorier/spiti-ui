@@ -1,7 +1,13 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MdButtonModule, MdIconModule, MdToolbarModule } from '@angular/material';
+import {
+  MdButtonModule,
+  MdCardModule,
+  MdIconModule,
+  MdInputModule,
+  MdToolbarModule,
+} from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -16,15 +22,18 @@ import { LoginComponent } from './login/login.component';
     LoginComponent,
   ],
   imports: [
+    AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule,
-    MdIconModule,
+    MdCardModule,
     MdButtonModule,
+    MdIconModule,
+    MdInputModule,
     MdToolbarModule,
   ],
   providers: [],
 })
-export class AppModule { }
+export class AppModule {
+}
