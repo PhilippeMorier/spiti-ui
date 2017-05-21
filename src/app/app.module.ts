@@ -4,6 +4,7 @@ import { HttpModule } from '@angular/http';
 import {
   MdButtonModule,
   MdCardModule,
+  MdCheckboxModule,
   MdIconModule,
   MdInputModule,
   MdToolbarModule,
@@ -28,6 +29,7 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     HttpModule,
     MdCardModule,
+    MdCheckboxModule,
     MdButtonModule,
     MdIconModule,
     MdInputModule,
