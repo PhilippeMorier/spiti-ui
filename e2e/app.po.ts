@@ -7,6 +7,6 @@ export class SpitiUiPage {
   }
 
   public getParagraphText(): promise.Promise<string> {
-    return element(by.css('spt-root h1')).getText();
+    return element(by.css('spt-root md-toolbar')).getText();
   }
 }

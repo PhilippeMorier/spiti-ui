@@ -1,5 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MdButtonModule, MdIconModule } from '@angular/material';
+import {
+  MdButtonModule,
+  MdCardModule,
+  MdCheckboxModule,
+  MdInputModule,
+} from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { LoginComponent } from './login.component';
 
@@ -11,8 +17,11 @@ describe('LoginComponent', () => {
     TestBed.configureTestingModule({
         declarations: [LoginComponent],
         imports: [
+          BrowserAnimationsModule,
           MdButtonModule,
-          MdIconModule,
+          MdCardModule,
+          MdCheckboxModule,
+          MdInputModule,
         ],
       })
       .compileComponents();
