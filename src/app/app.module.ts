@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {
@@ -17,6 +17,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Fullstory } from './fullstory';
 import { LoginComponent } from './login/login.component';
+import { Sentry, SENTRY_PROVIDERS } from './sentry';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -37,12 +38,20 @@ import { LoginComponent } from './login/login.component';
     MdInputModule,
     MdToolbarModule,
   ],
-  providers: [],
+  providers: [
+    Fullstory,
+    ...SENTRY_PROVIDERS,
+    { provide: ErrorHandler, useClass: Sentry },
+  ],
 })
 export class AppModule {
-  public constructor() {
-    if (environment.production) {
-      Fullstory.init();
+  public constructor(
+    private readonly fullstory: Fullstory,
+    private readonly sentry: Sentry,
+  ) {
+    if (!environment.production) {
+      fullstory.init();
+      sentry.init();
     }
   }
 }

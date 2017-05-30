@@ -1,6 +1,10 @@
+import { Injectable } from '@angular/core';
+
 // tslint:disable
+@Injectable()
 export class Fullstory {
-  public static init(): void {
+
+  public init(): void {
     window['_fs_ready'] = this.onReady;
     window['_fs_debug'] = false;
     window['_fs_host'] = 'fullstory.com';
@@ -19,7 +23,12 @@ export class Fullstory {
     })(window,document,window['_fs_namespace'],'script','user');
   }
 
-  private static onReady(): void {
+  public getSessionUrl(): string {
+    return window[window['_fs_namespace']] &&
+      window[window['_fs_namespace']].getCurrentSessionURL();
+  }
+
+  private onReady(): void {
     console.info('Fullstory is ready!');
   }
 }
