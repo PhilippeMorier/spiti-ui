@@ -1,8 +1,19 @@
 import { Injectable } from '@angular/core';
 
+interface FullstoryIntegratedWindow extends Window {
+  identify(uid: string, userVars?: UserData): void;
+  setUserVars(userVars: UserData): void;
+  getCurrentSessionURL(): string;
+}
+
+interface UserData {
+  [key: string]: string | number | Date | boolean;
+}
+
 // tslint:disable
 @Injectable()
 export class Fullstory {
+  private fullstoryWindow: FullstoryIntegratedWindow;
 
   public init(): void {
     window['_fs_ready'] = this.onReady;
@@ -24,11 +35,10 @@ export class Fullstory {
   }
 
   public getSessionUrl(): string {
-    return window[window['_fs_namespace']] &&
-      window[window['_fs_namespace']].getCurrentSessionURL();
+    return this.fullstoryWindow.getCurrentSessionURL();
   }
 
   private onReady(): void {
-    console.info('Fullstory is ready!');
+    this.fullstoryWindow = window[window['_fs_namespace']];
   }
 }
