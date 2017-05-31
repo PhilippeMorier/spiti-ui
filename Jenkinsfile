@@ -7,7 +7,7 @@ pipeline {
             steps {
                 ansiColor('xterm') {
                     sh 'npm install'
-                    sh 'npm run test -- --single-run'
+                    sh 'npm run test:ci -- --single-run'
                 }
             }
         }
