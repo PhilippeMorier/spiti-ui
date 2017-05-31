@@ -20,7 +20,7 @@ import { LoginComponent } from './login/login.component';
 import { Sentry, SENTRY_PROVIDERS } from './sentry';
 
 @NgModule({
-  bootstrap: [AppComponent],
+  bootstrap: [ AppComponent ],
   declarations: [
     AppComponent,
     LoginComponent,
@@ -49,7 +49,7 @@ export class AppModule {
     private readonly fullstory: Fullstory,
     private readonly sentry: Sentry,
   ) {
-    if (!environment.production) {
+    if (environment.production) {
       fullstory.init();
       sentry.init();
     }

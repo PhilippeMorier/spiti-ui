@@ -6,10 +6,12 @@ import { LoginComponent } from './login/login.component';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+  { path: 'editor', loadChildren: './editor/editor.module#EditorModule' },
 ];
 
 @NgModule({
-  exports: [RouterModule],
-  imports: [RouterModule.forRoot(routes)],
+  exports: [ RouterModule ],
+  imports: [ RouterModule.forRoot(routes) ],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
