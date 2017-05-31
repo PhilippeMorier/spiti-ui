@@ -4,11 +4,13 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
+    "tsc": "tsc",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "test:ci": "ng test --browsers HeadlessChrome Firefox",
     "lint": "ng lint",
+    "pree2e": "npm run tsc protractor.conf.ts",
     "e2e": "ng e2e",
     "coverage": "ng test --single-run true --code-coverage"
   },

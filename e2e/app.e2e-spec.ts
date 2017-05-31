@@ -9,6 +9,6 @@ describe('spiti-ui App', () => {
 
   it('should display message saying app works', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('spt works!');
+    expect(page.getParagraphText()).toEqual('spt works!\nEditor');
   });
 });
