@@ -35,7 +35,7 @@ export class Fullstory {
   }
 
   public getSessionUrl(): string {
-    return this.fullstoryWindow.getCurrentSessionURL();
+    return this.fullstoryWindow && this.fullstoryWindow.getCurrentSessionURL();
   }
 
   private onReady(): void {
