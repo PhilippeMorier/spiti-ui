@@ -1,3 +1,25 @@
-<p>
-  editor works!
+<p i18n>
+  There {
+    actions.length,
+    plural,
+    =0 {are no actions}
+    =1 {is one action}
+    =2 {are two actions}
+    other {are some actions}
+  }.
+</p>
+
+<ul>
+  <li *ngFor="let action of actions">
+    {{ action }}
+  </li>
+</ul>
+
+<p i18n>
+  There is an {
+    isMultipleOf(2),
+    select,
+    e {even}
+    o {odd}
+  } amount of actions.
 </p>
