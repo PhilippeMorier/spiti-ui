@@ -15,7 +15,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 
-import { environment } from '../environments/environment';
+import { environment } from '../environments/environment-source';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Fullstory } from './fullstory';

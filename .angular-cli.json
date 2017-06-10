@@ -22,7 +22,7 @@
         "styles.scss"
       ],
       "scripts": [],
-      "environmentSource": "environments/environment.ts",
+      "environmentSource": "environments/environment-source.ts",
       "environments": {
         "development": "environments/environment.development.ts",
         "production": "environments/environment.production.ts"

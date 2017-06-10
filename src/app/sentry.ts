@@ -1,7 +1,7 @@
 import { ErrorHandler, Inject, Injectable, InjectionToken } from '@angular/core';
 import * as ravenJs from 'raven-js';
 
-import { environment } from '../environments/environment';
+import { environment } from '../environments/environment-source';
 import { Fullstory } from './fullstory';
 
 export const RAVEN = new InjectionToken('Raven');
