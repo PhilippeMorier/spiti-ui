@@ -7,8 +7,9 @@ describe('spiti-ui App', () => {
     page = new SpitiUiPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display all menu links', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('spt works!\nEditor');
+    expect(page.getToolbarItem(0)).toEqual('Login');
+    expect(page.getToolbarItem(1)).toEqual('Editor');
   });
 });

@@ -6,7 +6,9 @@ export class SpitiUiPage {
     return browser.get('/');
   }
 
-  public getParagraphText(): promise.Promise<string> {
-    return element(by.css('spt-root md-toolbar')).getText();
+  public getToolbarItem(index: number): promise.Promise<string> {
+    return element.all(by.css('md-toolbar a'))
+      .get(index)
+      .getText();
   }
 }
