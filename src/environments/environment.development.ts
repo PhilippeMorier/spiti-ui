@@ -1,4 +1,6 @@
-export const environment = {
+import { Environment } from './environment';
+
+export const environment: Environment = {
   firebase: {
     apiKey: 'AIzaSyDaM1qsd-H3TOfknWSGi2yGsqvl5UkyMUA',
     authDomain: 'spiti-development.firebaseapp.com',

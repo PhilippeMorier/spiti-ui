@@ -3,8 +3,14 @@
 // `ng build --env=production` then `environment.production.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
-export const environment = {
+export const environment: Environment = {
   firebase: {},
-  name: '',
+  name: 'DEVELOPMENT',
   production: false,
 };
+
+export interface Environment {
+  firebase: {};
+  name: 'DEVELOPMENT' | 'STAGING' | 'PRODUCTION';
+  production: boolean;
+}
