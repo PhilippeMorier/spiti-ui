@@ -6,7 +6,10 @@ import { Config } from 'protractor';
 import { register } from 'ts-node';
 
 export const config: Config = {
-  allScriptsTimeout: 11000,
+  // https://github.com/angular/angularfire2/issues/779
+  // Increase timeout because of 'AngularFireModule.initializeApp()'
+  // sets up a 30 second timeout which protractor will wait for.
+  allScriptsTimeout: 32000,
   baseUrl: 'http://localhost:4200/',
   beforeLaunch: () => {
     register({
@@ -16,7 +19,7 @@ export const config: Config = {
   directConnect: true,
   framework: 'jasmine',
   jasmineNodeOpts: {
-    defaultTimeoutInterval: 30000,
+    defaultTimeoutInterval: 32000,
     print: () => {/* */},
     showColors: true,
   },
