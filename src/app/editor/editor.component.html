@@ -1,25 +1,27 @@
-<p i18n>
-  There {
-    actions.length,
-    plural,
-    =0 {are no actions}
-    =1 {is one action}
-    =2 {are two actions}
-    other {are some actions}
-  }.
-</p>
+<ng-container *ngIf="subscriptions | async as subscriptions">
+  <p i18n>
+    There {
+    subscriptions.length,
+      plural,
+      =0 {are no subscriptions}
+      =1 {is one subscription}
+      =2 {are two subscriptions}
+      other {are some subscriptions}
+    }.
+  </p>
 
-<ul>
-  <li *ngFor="let action of actions">
-    {{ action }}
-  </li>
-</ul>
+  <ul>
+    <li *ngFor="let subscription of subscriptions">
+      {{ subscription.name }}
+    </li>
+  </ul>
 
-<p i18n>
-  There is an {
-    isMultipleOf(2),
+  <p i18n>
+    There is an {
+    subscriptions.length % 2 == 0 ? 'e' : 'o',
     select,
     e {even}
     o {odd}
-  } amount of actions.
-</p>
+    } amount of subscriptions.
+  </p>
+</ng-container>

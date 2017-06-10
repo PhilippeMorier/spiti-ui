@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 @Component({
   selector: 'spt-editor',
@@ -6,15 +7,9 @@ import { Component } from '@angular/core';
   templateUrl: './editor.component.html',
 })
 export class EditorComponent {
-  public actions: string[] = [
-    'Edit',
-    'Save',
-    // 'Cut',
-  ];
+  public subscriptions: FirebaseListObservable<any[]>;
 
-  public isMultipleOf(factor: number): string {
-    return (this.actions.length % factor === 0)
-      ? 'e'
-      : 'o';
+  public constructor(db: AngularFireDatabase) {
+    this.subscriptions = db.list('/subscriptions');
   }
 }

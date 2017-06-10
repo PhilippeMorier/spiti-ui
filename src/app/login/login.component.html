@@ -17,6 +17,13 @@
   </md-card-content>
   <md-card-actions align="end">
     <button md-button>Cancel</button>
-    <button md-raised-button color="primary" (click)="throwErrorForSentry()">LOGIN</button>
+    <button md-raised-button color="primary" (click)="signIn('morier.dev@outlook.com', 'morier.dev')">
+      SIGN IN
+    </button>
   </md-card-actions>
 </md-card>
+<ng-container *ngIf="(user | async) as user">
+  <p>{{ user.uid }}</p>
+  <p>{{ user.email }}</p>
+  <button md-button (click)="signOut()">Sign Out</button>
+</ng-container>

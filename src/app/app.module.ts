@@ -11,6 +11,9 @@ import {
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
@@ -27,6 +30,7 @@ import { Sentry, SENTRY_PROVIDERS } from './sentry';
   ],
   imports: [
     AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
@@ -39,6 +43,8 @@ import { Sentry, SENTRY_PROVIDERS } from './sentry';
     MdToolbarModule,
   ],
   providers: [
+    AngularFireAuth,
+    AngularFireDatabase,
     Fullstory,
     ...SENTRY_PROVIDERS,
     { provide: ErrorHandler, useClass: Sentry },
