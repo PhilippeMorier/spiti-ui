@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
+import { SessionService } from '../session.service';
 
 @Component({
   selector: 'spt-login',
@@ -11,8 +11,10 @@ import { Observable } from 'rxjs/Observable';
 export class LoginComponent {
   public user: Observable<firebase.User>;
 
-  public constructor(public authenticationService: AngularFireAuth) {
-    this.user = authenticationService.authState;
+  public constructor(
+    private readonly session: SessionService,
+  ) {
+    this.user = this.session.currentlySignedInUser;
   }
 
   public throwErrorForSentry(): void {
@@ -20,12 +22,10 @@ export class LoginComponent {
   }
 
   public signIn(email: string, password: string): void {
-    this.authenticationService.auth
-      .signInWithEmailAndPassword(email, password)
-      .then((user: firebase.User) => console.log(user));
+    this.session.signIn(email, password);
   }
 
   public signOut(): void {
-    this.authenticationService.auth.signOut();
+    this.session.signOut();
   }
 }

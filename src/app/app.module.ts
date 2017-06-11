@@ -22,6 +22,7 @@ import { AppComponent } from './app.component';
 import { Fullstory } from './fullstory';
 import { LoginComponent } from './login/login.component';
 import { Sentry, SENTRY_PROVIDERS } from './sentry';
+import { SessionService } from './session.service';
 
 @NgModule({
   bootstrap: [ AppComponent ],
@@ -50,13 +51,11 @@ import { Sentry, SENTRY_PROVIDERS } from './sentry';
     Fullstory,
     ...SENTRY_PROVIDERS,
     { provide: ErrorHandler, useClass: Sentry },
+    SessionService,
   ],
 })
 export class AppModule {
-  public constructor(
-    private readonly fullstory: Fullstory,
-    private readonly sentry: Sentry,
-  ) {
+  public constructor(fullstory: Fullstory, sentry: Sentry) {
     if (environment.production) {
       fullstory.init();
       sentry.init();
