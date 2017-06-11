@@ -32,13 +32,9 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'spt works!'`, () => {
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('spt works!');
-  });
-
-  it('should render title in a h1 tag', () => {
+  it('should render menu links', () => {
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('md-toolbar').textContent).toContain('spt works!');
+    expect(compiled.querySelectorAll('md-toolbar a').item(0).textContent).toEqual('Login');
+    expect(compiled.querySelectorAll('md-toolbar a').item(1).textContent).toEqual('Editor');
   });
 });
