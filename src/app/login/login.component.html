@@ -16,7 +16,7 @@
     </form>
   </md-card-content>
   <md-card-actions align="end">
-    <button md-button>Cancel</button>
+    <button md-button (click)="throwErrorForSentry()">Cancel</button>
     <button md-raised-button color="primary" (click)="signIn('morier.dev@outlook.com', 'morier.dev')">
       SIGN IN
     </button>

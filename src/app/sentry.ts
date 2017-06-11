@@ -2,16 +2,12 @@ import { ErrorHandler, Inject, Injectable, InjectionToken } from '@angular/core'
 import * as ravenJs from 'raven-js';
 
 import { environment } from '../environments/environment-source';
-import { Fullstory } from './fullstory';
 
 export const RAVEN = new InjectionToken('Raven');
 
 @Injectable()
 export class Sentry extends ErrorHandler {
-  public constructor(
-    @Inject(RAVEN) private readonly raven: typeof ravenJs,
-    private readonly fullstory: Fullstory,
-  ) {
+  public constructor(@Inject(RAVEN) private readonly raven: typeof ravenJs) {
     super();
   }
 
@@ -30,7 +26,6 @@ export class Sentry extends ErrorHandler {
       error.originalError || error,
       {
         tags: {
-          fullstorySessionUrl: this.fullstory.getSessionUrl(),
         },
       },
     );

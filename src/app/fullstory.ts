@@ -34,11 +34,7 @@ export class Fullstory {
     })(window,document,window['_fs_namespace'],'script','user');
   }
 
-  public getSessionUrl(): string {
-    return this.fullstoryWindow && this.fullstoryWindow.getCurrentSessionURL();
-  }
-
   private onReady(): void {
-    this.fullstoryWindow = window[window['_fs_namespace']];
+    console.info('Fullstory is ready!');
   }
 }
