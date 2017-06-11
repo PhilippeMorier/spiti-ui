@@ -16,7 +16,7 @@ export class Fullstory {
   private fullstoryWindow: FullstoryIntegratedWindow;
 
   public init(): void {
-    window['_fs_ready'] = this.onReady;
+    window['_fs_ready'] = () => this.onReady();
     window['_fs_debug'] = false;
     window['_fs_host'] = 'fullstory.com';
     window['_fs_org'] = '4TVYC';
@@ -31,10 +31,11 @@ export class Fullstory {
       g.clearUserCookie=function(c,d,i){if(!c || document.cookie.match('fs_uid=[`;`]*`[`;`]*`[`;`]*`')){
         d=n.domain;while(1){n.cookie='fs_uid=;domain='+d+
           ';path=/;expires='+new Date(0).toUTCString();i=d.indexOf('.');if(i<0)break;d=d.slice(i+1)}}};
-    })(window,document,window['_fs_namespace'],'script','user');
+    })(window,document,window['_fs_namespace'],'script','currentlySignedInUser');
   }
 
   private onReady(): void {
+    this.fullstoryWindow = window[ window[ '_fs_namespace' ] ];
     console.info('Fullstory is ready!');
   }
 }
