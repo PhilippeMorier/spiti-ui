@@ -12,7 +12,7 @@ const angularCliPluginsKarma = require('@angular/cli/plugins/karma.js');
 module.exports = function (config: karma.Config): void {
   config.set({
     angularCli: {
-      environment: 'dev',
+      environment: 'development',
     },
     autoWatch: true,
     basePath: '',
