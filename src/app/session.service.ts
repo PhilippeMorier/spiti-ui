@@ -25,5 +25,5 @@ export class SessionService {
   }
 }
 
-interface User extends firebase.UserInfo {
+export interface User extends firebase.UserInfo {
 }

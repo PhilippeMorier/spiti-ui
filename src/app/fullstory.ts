@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
+import 'rxjs/add/observable/combineLatest';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { SessionService } from './session.service';
 
 interface FullstoryIntegratedWindow extends Window {
+  clearUserCookie(): void;
   identify(uid: string, userVars?: UserData): void;
   setUserVars(userVars: UserData): void;
   getCurrentSessionURL(): string;
@@ -10,12 +15,35 @@ interface UserData {
   [key: string]: string | number | Date | boolean;
 }
 
-// tslint:disable
 @Injectable()
 export class Fullstory {
   private fullstoryWindow: FullstoryIntegratedWindow;
+  private ready: Subject<void> = new Subject<void>();
+
+  public constructor(private readonly session: SessionService) {
+    Observable
+      .combineLatest(
+        this.session.currentlySignedInUser,
+        this.ready,
+      )
+      .subscribe(([user]) => {
+          if (user) {
+            this.fullstoryWindow.identify(
+              user.uid,
+              {
+                displayName: user.displayName,
+                email: user.email,
+              },
+            );
+          } else {
+            this.fullstoryWindow.clearUserCookie();
+          }
+        },
+      );
+  }
 
   public init(): void {
+    // tslint:disable
     window['_fs_ready'] = () => this.onReady();
     window['_fs_debug'] = false;
     window['_fs_host'] = 'fullstory.com';
@@ -36,6 +64,7 @@ export class Fullstory {
 
   private onReady(): void {
     this.fullstoryWindow = window[ window[ '_fs_namespace' ] ];
+    this.ready.next();
     console.info('Fullstory is ready!');
   }
 }
