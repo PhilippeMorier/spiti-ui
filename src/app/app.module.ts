@@ -8,6 +8,7 @@ import {
   MdIconModule,
   MdInputModule,
   MdToolbarModule,
+  MdTooltipModule,
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -41,6 +42,7 @@ import { Sentry, SENTRY_PROVIDERS } from './sentry';
     MdIconModule,
     MdInputModule,
     MdToolbarModule,
+    MdTooltipModule,
   ],
   providers: [
     AngularFireAuth,
