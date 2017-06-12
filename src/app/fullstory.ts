@@ -12,6 +12,8 @@ interface FullstoryIntegratedWindow extends Window {
 }
 
 interface UserData {
+  displayName?: string;
+  email?: string;
   [key: string]: string | number | Date | boolean;
 }
 
@@ -28,10 +30,11 @@ export class Fullstory {
       )
       .subscribe(([user, isReady]) => {
           if (user && isReady) {
-            this.fullstoryWindow.identify(user.uid, {
-              displayName: user.displayName,
-              email: user.email,
-            });
+            const userData: UserData = { email: user.email };
+            if (user.displayName) {
+              userData.displayName = user.displayName;
+            }
+            this.fullstoryWindow.identify(user.uid, userData);
           } else {
             this.fullstoryWindow.clearUserCookie(true);
           }
