@@ -25,5 +25,7 @@
 <ng-container *ngIf="(user | async) as user">
   <p>{{ user.uid }}</p>
   <p>{{ user.email }}</p>
+  <p>{{ user.displayName }}</p>
   <button md-button (click)="signOut()">Sign Out</button>
+  <button md-button (click)="setDisplayName()">Set display name</button>
 </ng-container>

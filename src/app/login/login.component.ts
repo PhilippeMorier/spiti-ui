@@ -28,4 +28,8 @@ export class LoginComponent {
   public signOut(): void {
     this.session.signOut();
   }
+
+  public setDisplayName(): void {
+    this.session.updateDisplayName('Morier');
+  }
 }

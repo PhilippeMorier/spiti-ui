@@ -23,7 +23,18 @@ export class SessionService {
       .fromPromise(this.authenticationService.auth.signOut())
       .first();
   }
+
+  public updateDisplayName(displayName: string): Observable<User> {
+    return Observable
+      .fromPromise(
+        this.authenticationService
+          .auth
+          .currentUser
+          .updateProfile({ displayName: displayName, photoURL: null }),
+      )
+      .first();
+  }
 }
 
-export interface User extends firebase.UserInfo {
+export interface User extends firebase.User {
 }
