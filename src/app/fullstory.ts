@@ -5,7 +5,7 @@ import { Subject } from 'rxjs/Subject';
 import { SessionService } from './session.service';
 
 interface FullstoryIntegratedWindow extends Window {
-  clearUserCookie(): void;
+  clearUserCookie(keepAnonymousCookie?: boolean): void;
   identify(uid: string, userVars?: UserData): void;
   setUserVars(userVars: UserData): void;
   getCurrentSessionURL(): string;
@@ -18,25 +18,22 @@ interface UserData {
 @Injectable()
 export class Fullstory {
   private fullstoryWindow: FullstoryIntegratedWindow;
-  private ready: Subject<void> = new Subject<void>();
+  private isReady: Subject<boolean> = new Subject<boolean>();
 
   public constructor(private readonly session: SessionService) {
     Observable
       .combineLatest(
         this.session.currentlySignedInUser,
-        this.ready,
+        this.isReady,
       )
-      .subscribe(([user]) => {
-          if (user) {
-            this.fullstoryWindow.identify(
-              user.uid,
-              {
-                displayName: user.displayName,
-                email: user.email,
-              },
-            );
+      .subscribe(([user, isReady]) => {
+          if (user && isReady) {
+            this.fullstoryWindow.identify(user.uid, {
+              displayName: user.displayName,
+              email: user.email,
+            });
           } else {
-            this.fullstoryWindow.clearUserCookie();
+            this.fullstoryWindow.clearUserCookie(true);
           }
         },
       );
@@ -63,8 +60,8 @@ export class Fullstory {
   }
 
   private onReady(): void {
+    console.info('Fullstory is isReady!');
     this.fullstoryWindow = window[ window[ '_fs_namespace' ] ];
-    this.ready.next();
-    console.info('Fullstory is ready!');
+    this.isReady.next(true);
   }
 }
