@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+
+import { SessionService, User } from '../session.service';
 
 @Component({
   selector: 'spt-account',
@@ -6,6 +9,11 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './account.component.html',
 })
 export class AccountComponent implements OnInit {
+  public user: Observable<User>;
+
+  public constructor(session: SessionService) {
+    this.user = session.currentlySignedInUser;
+  }
 
   public ngOnInit(): void {
   }

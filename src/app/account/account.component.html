@@ -5,11 +5,11 @@
     </md-card-title>
   </md-card-header>
   <md-card-content>
-    <form class="account-form">
-      <md-input-container hintLabel="example@email.com">
-        <input mdInput type="email" placeholder="Email" required>
-      </md-input-container>
-    </form>
+    <ng-container *ngIf="(user | async) as user">
+      <p>{{ user.uid }}</p>
+      <p>{{ user.email }}</p>
+      <p>{{ user.displayName }}</p>
+    </ng-container>
   </md-card-content>
   <md-card-actions align="end">
     <button md-raised-button color="primary">

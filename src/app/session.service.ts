@@ -6,10 +6,11 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class SessionService {
-  public currentlySignedInUser: Observable<User>;
+  public get currentlySignedInUser(): Observable<User> {
+    return this.authenticationService.authState;
+  }
 
   public constructor(public authenticationService: AngularFireAuth) {
-    this.currentlySignedInUser = authenticationService.authState;
   }
 
   public signIn(email: string, password: string): Observable<User> {
