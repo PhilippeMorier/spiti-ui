@@ -3,6 +3,6 @@
   <a md-button routerLink="editor" i18n="Editor title|Menu item">Editor</a>
   <span class="spacer"></span>
   <md-icon [mdTooltip]="(user | async)?.email">more_vert</md-icon>
-  <md-icon>account_box</md-icon>
+  <a routerLink="account"><md-icon>account_box</md-icon></a>
 </md-toolbar>
 <router-outlet></router-outlet>
