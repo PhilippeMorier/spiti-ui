@@ -6,6 +6,12 @@ import { SessionService, User } from './session.service';
 
 export const RAVEN = new InjectionToken('Raven');
 
+interface RavenUser {
+  id?: string;
+  username?: string;
+  email?: string;
+}
+
 @Injectable()
 export class Sentry extends ErrorHandler {
   public constructor(
@@ -18,11 +24,7 @@ export class Sentry extends ErrorHandler {
       .currentlySignedInUser
       .subscribe((user: User) => {
           if (user) {
-            this.raven.setUserContext({
-              email: user.email,
-              id: user.uid,
-              username: user.displayName,
-            });
+            this.raven.setUserContext(this.convertToRavenUser(user));
           } else {
             this.raven.setUserContext();
           }
@@ -49,6 +51,21 @@ export class Sentry extends ErrorHandler {
       },
     );
     super.handleError(error);
+  }
+
+  private convertToRavenUser(user: User): RavenUser {
+    const ravenUser: RavenUser = {};
+    if (user.email) {
+      ravenUser.email = user.email;
+    }
+    if (user.uid) {
+      ravenUser.id = user.uid;
+    }
+    if (user.displayName) {
+      ravenUser.username = user.displayName;
+    }
+
+    return ravenUser;
   }
 }
 

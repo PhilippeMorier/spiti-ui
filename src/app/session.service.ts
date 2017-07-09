@@ -26,6 +26,10 @@ export class SessionService {
   }
 
   public updateDisplayName(displayName: string): Observable<User> {
+    if (!this.authenticationService.auth.currentUser) {
+      return Observable.throw(new Error('No current user available.'));
+    }
+
     return Observable
       .fromPromise(
         this.authenticationService
