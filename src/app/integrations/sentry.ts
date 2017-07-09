@@ -1,8 +1,8 @@
 import { ErrorHandler, Inject, Injectable, InjectionToken } from '@angular/core';
 import * as ravenJs from 'raven-js';
 
-import { environment } from '../environments/environment-source';
-import { SessionService, User } from './session.service';
+import { environment } from '../../environments/environment-source';
+import { SessionService, User } from '../session.service';
 
 export const RAVEN = new InjectionToken('Raven');
 

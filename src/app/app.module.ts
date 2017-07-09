@@ -19,9 +19,9 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { environment } from '../environments/environment-source';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { Fullstory } from './fullstory';
+import { Fullstory } from './integrations/fullstory';
+import { Sentry, SENTRY_PROVIDERS } from './integrations/sentry';
 import { LoginComponent } from './login/login.component';
-import { Sentry, SENTRY_PROVIDERS } from './sentry';
 import { SessionService } from './session.service';
 
 @NgModule({

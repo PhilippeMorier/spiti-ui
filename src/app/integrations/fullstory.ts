@@ -3,8 +3,8 @@ import 'rxjs/add/observable/combineLatest';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
+import { SessionService } from '../session.service';
 import { tag } from './fullstory-tag';
-import { SessionService } from './session.service';
 
 interface FullstoryIntegratedWindow extends Window {
   clearUserCookie(keepAnonymousCookie?: boolean): void;
