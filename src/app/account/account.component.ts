@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { SessionService, User } from '../session.service';
@@ -8,14 +8,10 @@ import { SessionService, User } from '../session.service';
   styleUrls: ['./account.component.scss'],
   templateUrl: './account.component.html',
 })
-export class AccountComponent implements OnInit {
+export class AccountComponent {
   public user: Observable<User>;
 
   public constructor(session: SessionService) {
     this.user = session.currentlySignedInUser;
   }
-
-  public ngOnInit(): void {
-  }
-
 }

@@ -8,7 +8,7 @@ describe('BabylonComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BabylonComponent ]
+      declarations: [ BabylonComponent ],
     })
     .compileComponents();
   }));

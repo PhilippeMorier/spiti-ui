@@ -31,17 +31,25 @@ export class BabylonComponent implements AfterViewInit {
 
     this.light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0, 1, 0), this.scene);
 
-    const sphere = BABYLON.MeshBuilder.CreateSphere('sphere1', {
-      segments: 16,
-      diameter: 2,
-    }, this.scene);
+    const sphere = BABYLON.MeshBuilder.CreateSphere(
+      'sphere1',
+      {
+        diameter: 2,
+        segments: 16,
+      },
+      this.scene,
+    );
     sphere.position.y = 1;
 
-    BABYLON.MeshBuilder.CreateGround('ground1', {
-      width: 6,
-      height: 6,
-      subdivisions: 2,
-    }, this.scene);
+    BABYLON.MeshBuilder.CreateGround(
+      'ground1',
+      {
+        height: 6,
+        subdivisions: 2,
+        width: 6,
+      },
+      this.scene,
+    );
   }
 
   private animate(): void {
