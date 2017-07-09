@@ -3,7 +3,7 @@ import 'rxjs/add/observable/combineLatest';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
-import { init } from './fullstory-tag';
+import { tag } from './fullstory-tag';
 import { SessionService } from './session.service';
 
 interface FullstoryIntegratedWindow extends Window {
@@ -45,14 +45,13 @@ export class Fullstory {
   }
 
   public init(): void {
-    // tslint:disable
-    window['_fs_ready'] = () => this.onReady();
-    init();
+    tag.setReady(this.onReady);
+    tag.init();
   }
 
   private onReady(): void {
     console.info('Fullstory is isReady!');
-    this.fullstoryWindow = window[ window[ '_fs_namespace' ] ];
+    this.fullstoryWindow = tag.getNamespace();
     this.isReady.next(true);
   }
 }
