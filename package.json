@@ -48,9 +48,9 @@
     "@angular/compiler-cli": "4.3.1",
     "@angular/language-service": "4.3.1",
     "@types/jasmine": "2.5.45",
-    "@types/node": "7.0.18",
+    "@types/node": "8.0.15",
     "check-node-version": "2.1.0",
-    "codelyzer": "~2.0.0",
+    "codelyzer": "3.1.2",
     "jasmine-core": "2.6.1",
     "jasmine-spec-reporter": "~3.2.0",
     "karma": "1.7.0",
@@ -62,7 +62,7 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "5.1.2",
     "ts-node": "~2.0.0",
-    "tslint": "4.5.1",
-    "typescript": "2.3.2"
+    "tslint": "5.5.0",
+    "typescript": "2.4.2"
   }
 }
