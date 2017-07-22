@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import * as BABYLON from 'babylonjs';
 
+const SELECTION_VOXEL = 'selectionVoxel';
+
 @Component({
   selector: 'spt-babylon',
   styleUrls: [ './babylon.component.scss' ],
@@ -8,35 +10,45 @@ import * as BABYLON from 'babylonjs';
 })
 export class BabylonComponent implements AfterViewInit {
 
-  @ViewChild('canvas') private canvas: ElementRef;
+  @ViewChild('canvas') private canvasRef: ElementRef;
 
   private engine: BABYLON.Engine;
   private scene: BABYLON.Scene;
   private camera: BABYLON.FreeCamera;
   private light: BABYLON.Light;
-  private selectionBox: BABYLON.Mesh;
+  private selectionVoxel: BABYLON.Mesh;
 
   public ngAfterViewInit(): void {
-    this.engine = new BABYLON.Engine(this.canvas.nativeElement, true);
-
-    this.createScene();
+    this.engine = new BABYLON.Engine(this.canvasRef.nativeElement, true);
+    this.createScene(this.engine);
     this.animate();
   }
 
-  public createScene(): void {
-    this.scene = new BABYLON.Scene(this.engine);
+  public createScene(engine: BABYLON.Engine): void {
+    this.scene = new BABYLON.Scene(engine);
+    this.scene.onPointerUp = (event: PointerEvent, pickInfo: BABYLON.PickingInfo) => {
+      this.onMouseUp(pickInfo);
+    };
 
-    this.camera = new BABYLON.FreeCamera('camera1', new BABYLON.Vector3(0, 5, -10), this.scene);
+    this.camera = this.createFreeCamera();
+    this.camera.attachControl(this.canvasRef.nativeElement, false);
 
-    this.camera.setTarget(BABYLON.Vector3.Zero());
-    this.camera.attachControl(this.canvas.nativeElement, false);
+    this.light = new BABYLON.HemisphericLight('hemisphericLight', new BABYLON.Vector3(0, 1, 0), this.scene);
 
-    this.light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0, 1, 0), this.scene);
+    this.addVoxel(BABYLON.Vector3.Zero());
+    this.selectionVoxel = this.addVoxel(BABYLON.Vector3.Zero(), SELECTION_VOXEL);
+    this.selectionVoxel.isVisible = false;
+  }
 
-    const box = BABYLON.MeshBuilder.CreateBox('box', {}, this.scene);
-    box.position.x = 0;
-    this.selectionBox = BABYLON.MeshBuilder.CreateBox('selectionBox', {}, this.scene);
-    this.selectionBox.isVisible = false;
+  private createFreeCamera(): BABYLON.FreeCamera {
+    const camera = new BABYLON.FreeCamera('freeCamera', new BABYLON.Vector3(0, 5, -10), this.scene);
+    camera.keysUp.push(87); // W
+    camera.keysLeft.push(65); // A
+    camera.keysDown.push(83); // S
+    camera.keysRight.push(68); // D
+    camera.setTarget(BABYLON.Vector3.Zero());
+
+    return camera;
   }
 
   private animate(): void {
@@ -44,29 +56,40 @@ export class BabylonComponent implements AfterViewInit {
       this.showSelectionBox();
       this.scene.render();
     });
+  }
 
-    window.addEventListener('resize', () => {
-      this.engine.resize();
-    });
+  private onMouseUp(pickInfo: BABYLON.PickingInfo): void {
+    if (pickInfo.hit) {
+      this.selectionVoxel.isVisible = false;
+      this.addVoxel(this.selectionVoxel.position);
+    }
+  }
+
+  private addVoxel(position: BABYLON.Vector3, name?: string): BABYLON.Mesh {
+    name = (name) ? name : `voxel${position}`;
+    const voxel = BABYLON.MeshBuilder.CreateBox(name, {}, this.scene);
+    voxel.position = position;
+
+    return voxel;
   }
 
   private showSelectionBox(): void {
     const pickResult = this.scene.pick(this.scene.pointerX, this.scene.pointerY);
 
     if (!pickResult.hit) {
-      this.selectionBox.isVisible = false;
+      this.selectionVoxel.isVisible = false;
       return;
     }
 
-    if (pickResult.pickedMesh.name === 'selectionBox') {
+    if (pickResult.pickedMesh.name === SELECTION_VOXEL) {
       return;
     }
 
-    this.selectionBox.position = pickResult
+    this.selectionVoxel.position = pickResult
       .pickedMesh
       .position
       .add(this.getPositionOffset(pickResult.faceId));
-    this.selectionBox.isVisible = true;
+    this.selectionVoxel.isVisible = true;
   }
 
   private getPositionOffset(faceId: number): BABYLON.Vector3 {
@@ -90,7 +113,7 @@ export class BabylonComponent implements AfterViewInit {
       case 11:
         return new BABYLON.Vector3(0, -1, 0);
       default:
-        throw new Error('Face id not supported');
+        throw new Error('Invalid face id for voxel.');
     }
   }
 }
