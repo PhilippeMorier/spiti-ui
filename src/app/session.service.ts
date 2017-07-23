@@ -3,12 +3,14 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/operator/first';
+import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class SessionService {
-  public get currentlySignedInUser(): Observable<User> {
-    return this.authenticationService.authState;
+  public currentlySignedInUser(): Observable<User> {
+    return this.authenticationService.authState
+      .map((user: firebase.User) => new User(user));
   }
 
   public constructor(public authenticationService: AngularFireAuth) {
@@ -17,6 +19,7 @@ export class SessionService {
   public signIn(email: string, password: string): Observable<User> {
     return Observable
       .fromPromise(this.authenticationService.auth.signInWithEmailAndPassword(email, password))
+      .map((user: firebase.User) => new User(user))
       .first();
   }
 
@@ -42,5 +45,18 @@ export class SessionService {
   }
 }
 
-export interface User extends firebase.User {
+export class User {
+  public displayName?: string;
+  public email?: string;
+  public uid: string;
+
+  public constructor(fireBaseUser: firebase.User) {
+    if (fireBaseUser.displayName) {
+      this.displayName = fireBaseUser.displayName;
+    }
+    if (fireBaseUser.email) {
+      this.email = fireBaseUser.email;
+    }
+    this.uid = fireBaseUser.uid;
+  }
 }

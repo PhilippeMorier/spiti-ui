@@ -12,6 +12,6 @@ export class AccountComponent {
   public user: Observable<User>;
 
   public constructor(session: SessionService) {
-    this.user = session.currentlySignedInUser;
+    this.user = session.currentlySignedInUser();
   }
 }

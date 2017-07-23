@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
-import { SessionService } from '../session.service';
+import { SessionService, User } from '../session.service';
 
 @Component({
   selector: 'spt-login',
@@ -9,12 +8,12 @@ import { SessionService } from '../session.service';
   templateUrl: './login.component.html',
 })
 export class LoginComponent {
-  public user: Observable<firebase.User>;
+  public user: Observable<User>;
 
   public constructor(
     private readonly session: SessionService,
   ) {
-    this.user = this.session.currentlySignedInUser;
+    this.user = this.session.currentlySignedInUser();
   }
 
   public throwErrorForSentry(): void {
