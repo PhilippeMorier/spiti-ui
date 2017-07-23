@@ -21,7 +21,7 @@ export class Sentry extends ErrorHandler {
     super();
 
     this.session
-      .currentlySignedInUser
+      .currentlySignedInUser()
       .subscribe((user: User) => {
           if (user) {
             this.raven.setUserContext(this.convertToRavenUser(user));

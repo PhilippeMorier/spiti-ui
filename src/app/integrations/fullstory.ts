@@ -27,7 +27,7 @@ export class Fullstory {
   public constructor(private readonly session: SessionService) {
     Observable
       .combineLatest(
-        this.session.currentlySignedInUser,
+        this.session.currentlySignedInUser(),
         this.isReady,
       )
       .subscribe(([ user, isReady ]) => {
