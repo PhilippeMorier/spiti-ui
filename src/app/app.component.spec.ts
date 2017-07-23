@@ -1,13 +1,30 @@
-import { async, TestBed } from '@angular/core/testing';
-import { ComponentFixture } from '@angular/core/testing';
-import { MdToolbarModule } from '@angular/material';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MdIconModule, MdToolbarModule, MdTooltipModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
+import { Observable } from 'rxjs/Observable';
 
 import { AppComponent } from './app.component';
+import { SessionService, User } from './session.service';
 
 describe('AppComponent', () => {
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
+  let mockSessionService: SessionService;
+  let mockUser: User;
+
+  beforeEach(() => {
+    mockUser = {
+      displayName: 'Philippe',
+      email: 'philippe@test.com',
+      uid: '4242',
+    };
+    mockSessionService = jasmine.createSpyObj<SessionService>(
+      'mockSessionService',
+      [ 'currentlySignedInUser' ],
+    );
+    (<jasmine.Spy> mockSessionService.currentlySignedInUser)
+      .and.returnValue(Observable.of(mockUser));
+  });
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -17,6 +34,11 @@ describe('AppComponent', () => {
       imports: [
         RouterTestingModule,
         MdToolbarModule,
+        MdIconModule,
+        MdTooltipModule,
+      ],
+      providers: [
+        { provide: SessionService, useValue: mockSessionService },
       ],
     }).compileComponents();
   }));
