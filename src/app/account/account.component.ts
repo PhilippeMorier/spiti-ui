@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { SessionService, User } from '../session.service';
+import { User } from '../model/user.model';
+import { SessionService } from '../session.service';
 
 @Component({
   selector: 'spt-account',

@@ -6,6 +6,8 @@ import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 
+import { User } from './model/user.model';
+
 @Injectable()
 export class SessionService {
   public currentlySignedInUser(): Observable<User> {
@@ -42,21 +44,5 @@ export class SessionService {
           .updateProfile({ displayName: displayName, photoURL: null }),
       )
       .first();
-  }
-}
-
-export class User {
-  public displayName?: string;
-  public email?: string;
-  public uid: string;
-
-  public constructor(fireBaseUser: firebase.User) {
-    if (fireBaseUser.displayName) {
-      this.displayName = fireBaseUser.displayName;
-    }
-    if (fireBaseUser.email) {
-      this.email = fireBaseUser.email;
-    }
-    this.uid = fireBaseUser.uid;
   }
 }
