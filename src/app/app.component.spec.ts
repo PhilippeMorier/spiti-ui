@@ -4,7 +4,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { Observable } from 'rxjs/Observable';
 
 import { AppComponent } from './app.component';
-import { SessionService, User } from './session.service';
+import { User } from './model/user.model';
+import { SessionService } from './session.service';
 
 describe('AppComponent', () => {
   let component: AppComponent;

@@ -4,7 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
 
-import { SessionService, User } from '../session.service';
+import { User } from '../model/user.model';
+import { SessionService } from '../session.service';
 import { LoginComponent } from './login.component';
 
 describe('LoginComponent', () => {

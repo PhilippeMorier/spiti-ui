@@ -2,7 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MdCardModule } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 
-import { SessionService, User } from '../session.service';
+import { User } from '../model/user.model';
+import { SessionService } from '../session.service';
 import { AccountComponent } from './account.component';
 
 describe('AccountComponent', () => {
