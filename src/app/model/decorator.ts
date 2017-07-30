@@ -48,12 +48,10 @@ function formatErrors(errors: ValidationError[]): string {
 
 export function Form(): (target: Object, propertyKey: string) => void {
   return function (target: Object, propertyKey: string): void {
-    const targetMetadatas = getFromContainer(MetadataStorage).getTargetValidationMetadatas(target.constructor, '');
-    const groupedMetadatas = getFromContainer(MetadataStorage).groupByPropertyName(targetMetadatas);
-    console.log(groupedMetadatas);
+    const targetMetadatas = getFromContainer(MetadataStorage)
+      .getTargetValidationMetadatas(target.constructor, '');
 
     target.constructor.prototype.formGroup = buildFormGroup(targetMetadatas);
-    console.log(buildFormGroup(targetMetadatas));
   };
 }
 
@@ -69,17 +67,29 @@ function buildFormGroup(validations: ValidationMetadata[]): FormGroup {
   return builder.group(controlsConfig);
 }
 
-const validator = new Validator();
 function createValidators(validations: ValidationMetadata[]): ValidatorFn[] {
   return validations.map((validation: ValidationMetadata) => {
     return createValidator(validation);
   });
 }
 
+const validator = new Validator();
 function createValidator(validation: ValidationMetadata): ValidatorFn {
   return (control: AbstractControl): {[key: string]: {}} | null => {
+    if(!validator[ validation.type]) {
+      throw new Error(
+        `${validation.type} isn't a function on 'Validator'.
+Please check: https://github.com/pleerock/class-validator#manual-validation`,
+      );
+    }
+
     const isValid: boolean = validator[ validation.type ](control.value, ...validation.constraints);
-    console.log(validation.type, isValid, validation.message);
-    return isValid ? null : { property: validation.message};
+    if (isValid) {
+      return null;
+    }
+
+    const error = {};
+    error[ validation.type ] = validation.message;
+    return error;
   };
 }
