@@ -20,7 +20,5 @@ export class User {
       this.email = fireBaseUser.email;
     }
     this.uid = fireBaseUser.uid;
-
-    this.email = 'invalidEmail';
   }
 }
