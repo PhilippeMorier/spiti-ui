@@ -1,5 +1,5 @@
 import { ErrorHandler, NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {
   MdButtonModule,
@@ -44,6 +44,7 @@ import { SessionService } from './session.service';
     MdInputModule,
     MdToolbarModule,
     MdTooltipModule,
+    ReactiveFormsModule,
   ],
   providers: [
     AngularFireAuth,

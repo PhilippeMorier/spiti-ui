@@ -4,15 +4,17 @@
       <h1>Login</h1>
     </md-card-title>
   </md-card-header>
-  <md-card-content>
-    <form class="example-form">
+  <md-card-content *ngIf="(user | async) as user">
+    <!--<spt-form [model]="user"></spt-form>-->
+    <form [formGroup]="user.formGroup" class="example-form">
       <md-input-container hintLabel="example@email.com">
-        <input mdInput type="email" placeholder="Email" required>
+        <input formControlName="email" mdInput type="email" placeholder="Email" required>
       </md-input-container>
       <md-input-container>
         <input mdInput type="password" placeholder="Password" required>
       </md-input-container>
       <md-checkbox>Stay logged in</md-checkbox>
+      <p>{{ user.formGroup.valid | json }}</p>
     </form>
   </md-card-content>
   <md-card-actions align="end">

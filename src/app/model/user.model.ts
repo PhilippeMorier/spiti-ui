@@ -1,13 +1,16 @@
-import { IsEmail } from 'class-validator';
+import { IsEmail, IsString, MinLength } from 'class-validator';
 import * as firebase from 'firebase/app';
 
-import { Model } from './decorator';
+import { Form, Model } from './decorator';
 
 @Model()
 export class User {
+  @IsString()
   public displayName?: string;
 
+  @Form()
   @IsEmail()
+  @MinLength(4)
   public email?: string;
 
   public uid: string;
