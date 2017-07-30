@@ -46,25 +46,23 @@ function formatErrors(errors: ValidationError[]): string {
   return formattedErrors;
 }
 
-export function Form(): (target: Object, propertyKey: string) => void {
-  return function (target: Object, propertyKey: string): void {
-    const targetMetadatas = getFromContainer(MetadataStorage)
-      .getTargetValidationMetadatas(target.constructor, '');
+export function Form(): (constructor: Function) => any {
+  return function (constructor: Function): any {
+    const targetMetadata = getFromContainer(MetadataStorage)
+      .getTargetValidationMetadatas(constructor, '');
 
-    target.constructor.prototype.formGroup = buildFormGroup(targetMetadatas);
+    constructor.prototype.formGroup = buildFormGroup(targetMetadata);
   };
 }
 
 function buildFormGroup(validations: ValidationMetadata[]): FormGroup {
   const groupedValidations = getFromContainer(MetadataStorage).groupByPropertyName(validations);
-  const builder = new FormBuilder();
-
   const controlsConfig = {};
   for(const property in groupedValidations) {
     controlsConfig[ property ] = ['default value', createValidators(groupedValidations[property])];
   }
 
-  return builder.group(controlsConfig);
+  return new FormBuilder().group(controlsConfig);
 }
 
 function createValidators(validations: ValidationMetadata[]): ValidatorFn[] {

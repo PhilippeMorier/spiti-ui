@@ -4,11 +4,11 @@ import * as firebase from 'firebase/app';
 import { Form, Model } from './decorator';
 
 @Model()
+@Form()
 export class User {
   @IsString()
   public displayName?: string;
 
-  @Form()
   @IsEmail()
   @MinLength(4)
   public email?: string;

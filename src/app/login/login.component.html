@@ -14,7 +14,7 @@
         <input mdInput type="password" placeholder="Password" required>
       </md-input-container>
       <md-checkbox>Stay logged in</md-checkbox>
-      <p>{{ user.formGroup.valid | json }}</p>
+      <p>{{ user.formGroup.get('email').status | json }}</p>
     </form>
   </md-card-content>
   <md-card-actions align="end">
