@@ -13,6 +13,7 @@ export class User {
   @MinLength(4)
   public email?: string;
 
+  @IsString()
   public uid: string;
 
   public constructor(fireBaseUser: firebase.User) {

@@ -23,13 +23,20 @@ import { Fullstory } from './integrations/fullstory';
 import { Sentry, SENTRY_PROVIDERS } from './integrations/sentry';
 import { LoginComponent } from './login/login.component';
 import { SessionService } from './session.service';
+import { FormHostDirective } from './shared/form/form-host.directive';
+import { FormComponent } from './shared/form/form.component';
+import { InputComponent } from './shared/form/input/input.component';
 
 @NgModule({
   bootstrap: [ AppComponent ],
   declarations: [
     AppComponent,
     LoginComponent,
+    FormComponent,
+    InputComponent,
+    FormHostDirective,
   ],
+  entryComponents: [ InputComponent ],
   imports: [
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
