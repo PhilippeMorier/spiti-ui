@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
+import { Control } from '../control/control';
 import { FormConfig } from '../form.component';
 // https://github.com/angular/angular-cli/issues/2034
 type FormConfigWorkAround = FormConfig;
@@ -10,7 +11,7 @@ type FormConfigWorkAround = FormConfig;
   styleUrls: ['./input.component.scss'],
   templateUrl: './input.component.html',
 })
-export class InputComponent {
+export class InputComponent implements Control {
 
   @Input()
   public group: FormGroup;

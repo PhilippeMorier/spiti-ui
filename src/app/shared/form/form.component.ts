@@ -3,6 +3,7 @@ import {
 } from '@angular/core';
 
 import { User } from '../../model/user.model';
+import { Control } from './control/control';
 import { FormControlHostDirective } from './form-control-host.directive';
 
 // https://angular.io/guide/dynamic-component-loader
@@ -30,7 +31,7 @@ export class FormComponent implements OnInit {
     for(const config of this.configs) {
       const inputComponentFactory = this
         .componentFactoryResolver
-        .resolveComponentFactory<any>(config.component);
+        .resolveComponentFactory<Control>(config.component);
       const inputComponent = this.formHost.viewContainerRef.createComponent(inputComponentFactory);
       inputComponent.instance.group = this.model.formGroup;
       inputComponent.instance.config = config;
@@ -39,6 +40,6 @@ export class FormComponent implements OnInit {
 }
 
 export interface FormConfig {
-  component: Type<{}>;
+  component: Type<Control>;
   property: string;
 }
