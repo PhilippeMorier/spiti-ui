@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
+import { FormConfig } from 'app/shared/form/form.component';
 import { User } from '../model/user.model';
 import { SessionService } from '../session.service';
+import { InputComponent } from '../shared/form/input/input.component';
 
 @Component({
   selector: 'spt-login',
@@ -11,10 +13,18 @@ import { SessionService } from '../session.service';
 })
 export class LoginComponent {
   public user: Observable<User>;
+  public config: [FormConfig] = [
+    {
+      component: InputComponent,
+      property: 'displayName',
+    },
+    {
+      component: InputComponent,
+      property: 'email',
+    },
+  ];
 
-  public constructor(
-    private readonly session: SessionService,
-  ) {
+  public constructor(private readonly session: SessionService) {
     this.user = this.session.currentlySignedInUser();
   }
 

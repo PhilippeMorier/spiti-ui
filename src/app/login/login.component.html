@@ -16,7 +16,12 @@
       <p>{{ user.formGroup.get('email').status | json }}</p>
     </form>
 
-    <spt-form [model]="user"></spt-form>
+    <spt-form
+      [model]="user"
+      [configs]="config"
+    >
+    </spt-form>
+
   </md-card-content>
   <md-card-actions align="end">
     <button md-button (click)="throwErrorForSentry()">Cancel</button>

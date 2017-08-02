@@ -1,10 +1,9 @@
 import {
-  Component, ComponentFactoryResolver, Input, OnInit, ViewChild,
+  Component, ComponentFactoryResolver, Input, OnInit, Type, ViewChild,
 } from '@angular/core';
 
 import { User } from '../../model/user.model';
 import { FormControlHostDirective } from './form-control-host.directive';
-import { InputComponent } from './input/input.component';
 
 // https://angular.io/guide/dynamic-component-loader
 // https://toddmotto.com/angular-dynamic-components-forms
@@ -18,6 +17,9 @@ export class FormComponent implements OnInit {
   @Input()
   public model: User;
 
+  @Input()
+  public configs: [FormConfig];
+
   @ViewChild(FormControlHostDirective)
   private formHost: FormControlHostDirective;
 
@@ -25,11 +27,18 @@ export class FormComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    const inputComponentFactory = this
-      .componentFactoryResolver
-      .resolveComponentFactory(InputComponent);
-    const inputComponent = this.formHost.viewContainerRef.createComponent(inputComponentFactory);
-    inputComponent.instance.group = this.model.formGroup;
+    for(const config of this.configs) {
+      const inputComponentFactory = this
+        .componentFactoryResolver
+        .resolveComponentFactory<any>(config.component);
+      const inputComponent = this.formHost.viewContainerRef.createComponent(inputComponentFactory);
+      inputComponent.instance.group = this.model.formGroup;
+      inputComponent.instance.config = config;
+    }
   }
+}
 
+export interface FormConfig {
+  component: Type<{}>;
+  property: string;
 }

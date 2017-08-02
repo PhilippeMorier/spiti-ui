@@ -59,7 +59,7 @@ function buildFormGroup(validations: ValidationMetadata[]): FormGroup {
   const groupedValidations = getFromContainer(MetadataStorage).groupByPropertyName(validations);
   const controlsConfig = {};
   for(const property in groupedValidations) {
-    controlsConfig[ property ] = ['default value', createValidators(groupedValidations[property])];
+    controlsConfig[ property ] = [property, createValidators(groupedValidations[property])];
   }
 
   return new FormBuilder().group(controlsConfig);
