@@ -4,7 +4,7 @@ import { MetadataStorage } from 'class-validator/metadata/MetadataStorage';
 import { ValidationMetadata } from 'class-validator/metadata/ValidationMetadata';
 
 // tslint:disable:no-any
-export function Model(): (constructor: Function) => any {
+export function Model(): ClassDecorator {
   return function (constructor: Function): any {
     // save a reference to the original constructor
     const original = constructor;
@@ -46,7 +46,7 @@ function formatErrors(errors: ValidationError[]): string {
   return formattedErrors;
 }
 
-export function Form(): (constructor: Function) => any {
+export function Form(): ClassDecorator {
   return function (constructor: Function): any {
     const targetMetadata = getFromContainer(MetadataStorage)
       .getTargetValidationMetadatas(constructor, '');
