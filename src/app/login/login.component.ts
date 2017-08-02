@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { FormConfig } from 'app/shared/form/form.component';
 import { User } from '../model/user.model';
 import { SessionService } from '../session.service';
-import { InputComponent } from '../shared/form/input/input.component';
+import { InputComponent } from '../shared/form/control/input/input.component';
 
 @Component({
   selector: 'spt-login',

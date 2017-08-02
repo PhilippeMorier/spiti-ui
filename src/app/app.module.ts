@@ -23,9 +23,9 @@ import { Fullstory } from './integrations/fullstory';
 import { Sentry, SENTRY_PROVIDERS } from './integrations/sentry';
 import { LoginComponent } from './login/login.component';
 import { SessionService } from './session.service';
+import { InputComponent } from './shared/form/control/input/input.component';
 import { FormControlHostDirective } from './shared/form/form-control-host.directive';
 import { FormComponent } from './shared/form/form.component';
-import { InputComponent } from './shared/form/input/input.component';
 
 @NgModule({
   bootstrap: [ AppComponent ],

@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
-import { Control } from '../control/control';
-import { FormConfig } from '../form.component';
+import { FormConfig } from '../../form.component';
+import { Control } from '../control';
 // https://github.com/angular/angular-cli/issues/2034
 type FormConfigWorkAround = FormConfig;
 
