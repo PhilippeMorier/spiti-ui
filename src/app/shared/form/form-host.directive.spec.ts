@@ -1,8 +1,8 @@
-import { FormHostDirective } from './form-host.directive';
+import { FormControlHostDirective } from './form-control-host.directive';
 
-describe('FormHostDirective', () => {
+describe('FormControlHostDirective', () => {
   it('should create an instance', () => {
-    const directive = new FormHostDirective();
+    const directive = new FormControlHostDirective();
     expect(directive).toBeTruthy();
   });
 });

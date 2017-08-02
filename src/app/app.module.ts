@@ -23,7 +23,7 @@ import { Fullstory } from './integrations/fullstory';
 import { Sentry, SENTRY_PROVIDERS } from './integrations/sentry';
 import { LoginComponent } from './login/login.component';
 import { SessionService } from './session.service';
-import { FormHostDirective } from './shared/form/form-host.directive';
+import { FormControlHostDirective } from './shared/form/form-control-host.directive';
 import { FormComponent } from './shared/form/form.component';
 import { InputComponent } from './shared/form/input/input.component';
 
@@ -34,7 +34,7 @@ import { InputComponent } from './shared/form/input/input.component';
     LoginComponent,
     FormComponent,
     InputComponent,
-    FormHostDirective,
+    FormControlHostDirective,
   ],
   entryComponents: [ InputComponent ],
   imports: [

@@ -3,7 +3,7 @@ import {
 } from '@angular/core';
 
 import { User } from '../../model/user.model';
-import { FormHostDirective } from './form-host.directive';
+import { FormControlHostDirective } from './form-control-host.directive';
 import { InputComponent } from './input/input.component';
 
 // https://angular.io/guide/dynamic-component-loader
@@ -18,8 +18,8 @@ export class FormComponent implements OnInit {
   @Input()
   public model: User;
 
-  @ViewChild(FormHostDirective)
-  private formHost: FormHostDirective;
+  @ViewChild(FormControlHostDirective)
+  private formHost: FormControlHostDirective;
 
   public constructor(private readonly componentFactoryResolver: ComponentFactoryResolver) {
   }
