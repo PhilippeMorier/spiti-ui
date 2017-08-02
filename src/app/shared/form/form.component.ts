@@ -1,9 +1,7 @@
-import {
-  Component, ComponentFactoryResolver, Input, OnInit, Type, ViewChild,
-} from '@angular/core';
+import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@angular/core';
 
 import { User } from '../../model/user.model';
-import { Control } from './control/control';
+import { Control, ControlConfig } from './control/control';
 import { FormControlHostDirective } from './form-control-host.directive';
 
 // https://angular.io/guide/dynamic-component-loader
@@ -19,7 +17,7 @@ export class FormComponent implements OnInit {
   public model: User;
 
   @Input()
-  public configs: [FormConfig];
+  public configs: [ ControlConfig ];
 
   @ViewChild(FormControlHostDirective)
   private formHost: FormControlHostDirective;
@@ -28,7 +26,7 @@ export class FormComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    for(const config of this.configs) {
+    for (const config of this.configs) {
       const inputComponentFactory = this
         .componentFactoryResolver
         .resolveComponentFactory<Control>(config.component);
@@ -37,9 +35,4 @@ export class FormComponent implements OnInit {
       inputComponent.instance.config = config;
     }
   }
-}
-
-export interface FormConfig {
-  component: Type<Control>;
-  property: string;
 }

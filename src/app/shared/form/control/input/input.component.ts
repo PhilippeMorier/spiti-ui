@@ -1,10 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
-import { FormConfig } from '../../form.component';
-import { Control } from '../control';
+import { Control, ControlConfig } from '../control';
 // https://github.com/angular/angular-cli/issues/2034
-type FormConfigWorkAround = FormConfig;
 
 @Component({
   selector: 'spt-input',
@@ -17,6 +15,6 @@ export class InputComponent implements Control {
   public group: FormGroup;
 
   @Input()
-  public config: FormConfigWorkAround;
+  public config: ControlConfig;
 
 }

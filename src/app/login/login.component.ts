@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { FormConfig } from 'app/shared/form/form.component';
 import { User } from '../model/user.model';
 import { SessionService } from '../session.service';
+import { ControlConfig } from '../shared/form/control/control';
 import { InputComponent } from '../shared/form/control/input/input.component';
 
 @Component({
@@ -13,7 +13,7 @@ import { InputComponent } from '../shared/form/control/input/input.component';
 })
 export class LoginComponent {
   public user: Observable<User>;
-  public config: [FormConfig] = [
+  public config: [ControlConfig] = [
     {
       component: InputComponent,
       property: 'displayName',
