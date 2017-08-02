@@ -29,7 +29,7 @@ export class FormComponent implements OnInit {
       .componentFactoryResolver
       .resolveComponentFactory(InputComponent);
     const inputComponent = this.formHost.viewContainerRef.createComponent(inputComponentFactory);
-    inputComponent.instance.group = (<any> this.model).formGroup;
+    inputComponent.instance.group = this.model.formGroup;
   }
 
 }
