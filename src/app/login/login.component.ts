@@ -16,10 +16,12 @@ export class LoginComponent {
   public config: [ControlConfig] = [
     {
       component: InputComponent,
+      placeholderText: 'Name',
       property: 'displayName',
     },
     {
       component: InputComponent,
+      placeholderText: 'Email',
       property: 'email',
     },
   ];

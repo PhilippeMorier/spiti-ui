@@ -8,5 +8,6 @@ export interface Control {
 
 export interface ControlConfig {
   component: Type<Control>;
+  placeholderText: string;
   property: string;
 }
