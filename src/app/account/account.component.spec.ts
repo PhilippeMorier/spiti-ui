@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormGroup } from '@angular/forms';
 import { MdCardModule } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 
@@ -16,6 +17,7 @@ describe('AccountComponent', () => {
     mockUser = {
       displayName: 'Philippe',
       email: 'philippe@test.com',
+      formGroup: new FormGroup({}),
       uid: '4242',
     };
     mockSessionService = jasmine.createSpyObj<SessionService>(

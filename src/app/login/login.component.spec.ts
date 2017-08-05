@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormGroup } from '@angular/forms';
 import { MdButtonModule, MdCardModule, MdCheckboxModule, MdInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'rxjs/add/observable/of';
@@ -18,6 +19,7 @@ describe('LoginComponent', () => {
     mockUser = {
       displayName: 'Philippe',
       email: 'philippe@test.com',
+      formGroup: new FormGroup({}),
       uid: '4242',
     };
     mockSessionService = jasmine.createSpyObj<SessionService>(
