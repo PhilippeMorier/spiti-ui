@@ -1,11 +1,10 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormGroup } from '@angular/forms';
-import { MdButtonModule, MdCardModule, MdCheckboxModule, MdInputModule } from '@angular/material';
+import { MdButtonModule, MdCardModule, MdCheckboxModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
 
-import { User } from '../model/user.model';
 import { SessionService } from '../session.service';
 import { LoginComponent } from './login.component';
 
@@ -13,13 +12,11 @@ describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let mockSessionService: SessionService;
-  let mockUser: User;
 
   beforeEach(() => {
-    mockUser = {
+    const mockUser = {
       displayName: 'Philippe',
       email: 'philippe@test.com',
-      formGroup: new FormGroup({}),
       uid: '4242',
     };
     mockSessionService = jasmine.createSpyObj<SessionService>(
@@ -38,11 +35,11 @@ describe('LoginComponent', () => {
           MdButtonModule,
           MdCardModule,
           MdCheckboxModule,
-          MdInputModule,
         ],
         providers: [
           { provide: SessionService, useValue: mockSessionService },
         ],
+        schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
       })
       .compileComponents();
   }));
