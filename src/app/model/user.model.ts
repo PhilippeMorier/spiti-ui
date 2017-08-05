@@ -7,12 +7,11 @@ import { Form, Model } from './decorator';
 @Model()
 @Form()
 export class User extends BaseModel {
-  @IsString()
-  @MaxLength(10, { message: 'Display name has a maximum length of 10 characters.' })
+  @MaxLength(10, { message: 'Max length is 10 characters.' })
   public displayName?: string;
 
   @IsEmail({}, { message: 'Invalid email.' })
-  @MinLength(4)
+  @MinLength(4, { message: 'Min length is 4 characters.' })
   public email?: string;
 
   @IsString()

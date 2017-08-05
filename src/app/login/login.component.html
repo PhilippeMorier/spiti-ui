@@ -6,12 +6,6 @@
   </md-card-header>
   <md-card-content *ngIf="(user | async) as user">
     <form [formGroup]="user.formGroup" class="example-form">
-      <md-input-container hintLabel="example@email.com">
-        <input formControlName="email" mdInput type="email" placeholder="Email" required>
-      </md-input-container>
-      <md-input-container>
-        <input mdInput type="password" placeholder="Password" required>
-      </md-input-container>
       <md-checkbox>Stay logged in</md-checkbox>
       <p>{{ user.formGroup.get('email').status | json }}</p>
     </form>

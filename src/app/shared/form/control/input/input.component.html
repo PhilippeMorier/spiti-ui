@@ -1,3 +1,10 @@
-<md-input-container [formGroup]="group">
-  <input mdInput [formControlName]="config.property" type="text" [placeholder]="config.placeholderText" required>
+<md-input-container
+  [formGroup]="group"
+  [hintLabel]="errorMessage | async"
+>
+  <input mdInput
+         [formControlName]="config.property"
+         [placeholder]="config.placeholderText"
+         [type]="config.type"
+  >
 </md-input-container>

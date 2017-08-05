@@ -18,11 +18,13 @@ export class LoginComponent {
       component: InputComponent,
       placeholderText: 'Name',
       property: 'displayName',
+      type: 'text',
     },
     {
       component: InputComponent,
       placeholderText: 'Email',
       property: 'email',
+      type: 'email',
     },
   ];
 

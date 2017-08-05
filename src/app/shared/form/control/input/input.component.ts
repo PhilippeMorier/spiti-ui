@@ -1,15 +1,17 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/switchMap';
+import { Observable } from 'rxjs/Observable';
 
 import { Control, ControlConfig } from '../control';
-// https://github.com/angular/angular-cli/issues/2034
 
 @Component({
   selector: 'spt-input',
-  styleUrls: ['./input.component.scss'],
+  styleUrls: [ './input.component.scss' ],
   templateUrl: './input.component.html',
 })
-export class InputComponent implements Control {
+export class InputComponent implements Control, OnInit {
 
   @Input()
   public group: FormGroup;
@@ -17,4 +19,24 @@ export class InputComponent implements Control {
   @Input()
   public config: ControlConfig;
 
+  public errorMessage: Observable<string>;
+
+  public ngOnInit(): void {
+    const property = this.group.get(this.config.property);
+    if (property) {
+      this.errorMessage = property.valueChanges
+        .filter(() => !!property.errors)
+        .map(() => {
+          let errors: string = '';
+
+          if (property.errors) {
+            for (const key in property.errors) {
+              errors += `${property.errors[ key ]} `;
+            }
+          }
+
+          return errors;
+        });
+    }
+  }
 }
