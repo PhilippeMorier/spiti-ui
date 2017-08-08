@@ -24,7 +24,9 @@ export const config: Config = {
     showColors: true,
   },
   multiCapabilities: [
-    // Disabled Firefox due: https://github.com/mozilla/geckodriver/issues/529
+    // Disabled Firefox due:
+    // - https://github.com/mozilla/geckodriver/issues/529
+    // - https://github.com/angular/protractor/issues/4253
     // {
     //   'browserName': 'firefox',
     // },
