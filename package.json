@@ -37,7 +37,7 @@
     "angularfire2": "4.0.0-rc.1",
     "babylonjs": "3.0.7",
     "class-validator": "0.7.2",
-    "core-js": "2.4.1",
+    "core-js": "2.5.0",
     "firebase": "4.2.0",
     "promise-polyfill": "6.0.2",
     "raven-js": "3.17.0",
