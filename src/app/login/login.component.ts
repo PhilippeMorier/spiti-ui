@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { User } from '../model/user.model';
 import { SessionService } from '../session.service';
 import { ControlConfig } from '../shared/form/control/control';
+import { InputType } from '../shared/form/control/input-type';
 import { InputComponent } from '../shared/form/control/input/input.component';
 
 @Component({
@@ -13,18 +14,18 @@ import { InputComponent } from '../shared/form/control/input/input.component';
 })
 export class LoginComponent {
   public user: Observable<User>;
-  public config: [ControlConfig] = [
+  public config: [ ControlConfig ] = [
     {
       component: InputComponent,
       placeholderText: 'Name',
       property: 'displayName',
-      type: 'text',
+      type: InputType.TEXT,
     },
     {
       component: InputComponent,
       placeholderText: 'Email',
       property: 'email',
-      type: 'email',
+      type: InputType.EMAIL,
     },
   ];
 
