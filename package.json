@@ -35,7 +35,7 @@
     "@angular/platform-browser-dynamic": "4.3.3",
     "@angular/router": "4.3.3",
     "angularfire2": "4.0.0-rc.1",
-    "babylonjs": "3.0.7",
+    "babylonjs": "3.1.0-alpha1",
     "class-validator": "0.7.2",
     "core-js": "2.5.0",
     "firebase": "4.2.0",
