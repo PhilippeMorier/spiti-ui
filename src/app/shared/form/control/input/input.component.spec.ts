@@ -3,6 +3,7 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { MdInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { InputType } from '../input-type';
 import { InputComponent } from './input.component';
 
 describe('InputComponent', () => {
@@ -30,7 +31,7 @@ describe('InputComponent', () => {
       component: InputComponent,
       placeholderText: 'Name',
       property: 'displayName',
-      type: 'text',
+      type: InputType.TEXT,
     };
     component.group = new FormGroup({ displayName: new FormControl() });
 

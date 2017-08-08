@@ -4,6 +4,7 @@ import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
 import { Control, ControlConfig } from './control/control';
+import { InputType } from './control/input-type';
 import { FormControlHostDirective } from './form-control-host.directive';
 import { FormComponent } from './form.component';
 
@@ -57,7 +58,7 @@ describe('FormComponent', () => {
       component: DummyComponent,
       placeholderText: 'Name',
       property: 'displayName',
-      type: 'text',
+      type: InputType.TEXT,
     };
     component.configs = [ config ];
     fixture.detectChanges();
