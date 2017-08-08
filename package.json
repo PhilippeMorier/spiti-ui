@@ -52,7 +52,7 @@
     "@types/node": "8.0.19",
     "check-node-version": "2.1.0",
     "codelyzer": "3.1.2",
-    "jasmine-core": "2.6.1",
+    "jasmine-core": "2.7.0",
     "jasmine-spec-reporter": "4.2.0",
     "karma": "1.7.0",
     "karma-chrome-launcher": "2.2.0",
