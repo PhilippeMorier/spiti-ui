@@ -6,6 +6,7 @@ import * as karmaCoverageIstanbulReporter from 'karma-coverage-istanbul-reporter
 import * as karmaFirefoxLauncher from 'karma-firefox-launcher';
 import * as karmaJasmine from 'karma-jasmine';
 import * as karmaJasmineHtmlReporter from 'karma-jasmine-html-reporter';
+import * as karmaMochaReporter from 'karma-mocha-reporter';
 // tslint:disable-next-line:no-require-imports no-var-requires
 const angularCliPluginsKarma = require('@angular/cli/plugins/karma.js');
 
@@ -50,6 +51,7 @@ module.exports = function (config: karma.Config): void {
       karmaChromeLauncher,
       karmaFirefoxLauncher,
       karmaJasmineHtmlReporter,
+      karmaMochaReporter,
       karmaCoverageIstanbulReporter,
       angularCliPluginsKarma,
     ],
@@ -59,7 +61,7 @@ module.exports = function (config: karma.Config): void {
     },
     reporters: config.angularCli && config.angularCli.codeCoverage
       ? ['progress', 'coverage-istanbul']
-      : ['progress', 'kjhtml'],
+      : ['progress', 'kjhtml', 'mocha'],
     singleRun: false,
   });
 };
