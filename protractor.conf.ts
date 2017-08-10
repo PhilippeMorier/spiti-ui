@@ -10,7 +10,7 @@ export const config: Config = {
   // Increase timeout because of 'AngularFireModule.initializeApp()'
   // sets up a 30 second timeout which protractor will wait for.
   allScriptsTimeout: 32000,
-  baseUrl: 'http://localhost:4200/',
+  baseUrl: 'http://localhost:8080/',
   beforeLaunch: () => {
     register({
       project: 'e2e/tsconfig.e2e.json',
