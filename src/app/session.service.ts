@@ -12,6 +12,7 @@ import { User } from './model/user.model';
 export class SessionService {
   public currentlySignedInUser(): Observable<User> {
     return this.authenticationService.authState
+      .filter((user: firebase.User) => !!user)
       .map((user: firebase.User) => new User(user));
   }
 
