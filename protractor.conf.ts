@@ -9,6 +9,8 @@ export const config: Config = {
   // https://github.com/angular/angularfire2/issues/779
   // Increase timeout because of 'AngularFireModule.initializeApp()'
   // sets up a 30 second timeout which protractor will wait for.
+  // Possible alternative:
+  // https://github.com/angular/angularfire2/issues/225#issuecomment-318490125
   allScriptsTimeout: 32000,
   baseUrl: 'http://localhost:8080/',
   beforeLaunch: () => {
