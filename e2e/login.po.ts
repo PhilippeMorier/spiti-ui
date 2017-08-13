@@ -1,10 +1,12 @@
 import { browser, by, element } from 'protractor';
 import { promise } from 'selenium-webdriver';
 
-export class LoginPage {
-  public navigateTo(): this {
-    browser.get('/login');
-    return this;
+import { AppRoute } from '../src/app/app-routing.module';
+import { BasePage } from './basePage.po';
+
+export class LoginPage extends BasePage {
+  public constructor() {
+    super(AppRoute.Login);
   }
 
   public getToolbarItem(index: number): promise.Promise<string> {

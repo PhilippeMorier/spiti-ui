@@ -1,10 +1,12 @@
-import { browser, by, element } from 'protractor';
+import { by, element } from 'protractor';
 import { promise } from 'selenium-webdriver';
 
-export class EditorPage {
-  public navigateTo(): this {
-    browser.get('/editor');
-    return this;
+import { AppRoute } from '../src/app/app-routing.module';
+import { BasePage } from './basePage.po';
+
+export class EditorPage extends BasePage {
+  public constructor() {
+    super(AppRoute.Editor);
   }
 
   public getListItem(index: number): promise.Promise<string> {
