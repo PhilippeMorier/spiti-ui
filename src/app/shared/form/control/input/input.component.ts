@@ -25,7 +25,6 @@ export class InputComponent implements Control, OnInit {
     const property = this.group.get(this.config.property);
     if (property) {
       this.errorMessage = property.valueChanges
-        .filter(() => !!property.errors)
         .map(() => {
           let errors: string = '';
 
