@@ -15,6 +15,7 @@
     "pree2e": "npm run tsc protractor.conf.ts",
     "postinstall": "check-node-version --package",
     "e2e": "ng e2e --env=development",
+    "e2e:noserve": "npm run e2e -- --serve false",
     "coverage": "ng test --single-run true --code-coverage"
   },
   "private": true,
