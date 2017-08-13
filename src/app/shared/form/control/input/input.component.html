@@ -3,6 +3,7 @@
   [hintLabel]="errorMessage | async"
 >
   <input mdInput
+         [name]="config.property"
          [formControlName]="config.property"
          [placeholder]="config.placeholderText"
          [type]="config.type"
