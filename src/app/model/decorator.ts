@@ -6,28 +6,25 @@ import { ValidationMetadata } from 'class-validator/metadata/ValidationMetadata'
 // tslint:disable:no-any
 export function Model(): ClassDecorator {
   return function (constructor: Function): any {
-    // save a reference to the original constructor
-    const original = constructor;
-
     // the new constructor behaviour
     const newConstructor = function (): any {
-      const result = original.apply(original.prototype, arguments);
+      const result = constructor.apply(constructor.prototype, arguments);
 
-      validate(original.prototype)
+      validate(constructor.prototype)
         .then(errors => {
           if (errors.length > 0) {
-            throw new Error(formatErrors(errors));
+            throw new Error(formatErrors(constructor.name, errors));
           }
         })
         .catch(error => {
-          console.error(error);
+          console.info(error);
         });
 
       return result;
     };
 
     // copy prototype so intanceof operator still works
-    newConstructor.prototype = original.prototype;
+    newConstructor.prototype = constructor.prototype;
 
     // return new constructor (will override original)
     return newConstructor;
@@ -35,8 +32,8 @@ export function Model(): ClassDecorator {
 }
 // tslint:enable:no-any
 
-function formatErrors(errors: ValidationError[]): string {
-  let formattedErrors: string = 'Model Validation';
+function formatErrors(className: string, errors: ValidationError[]): string {
+  let formattedErrors: string = `Model Validation for '${className}'`;
   for (const error of errors) {
     for (const key in error.constraints) {
       formattedErrors += `\n - ${error.constraints[ key ]} (${error.property}: ${error.value})`;
