@@ -1,15 +1,19 @@
-import { SpitiUiPage } from './app.po';
+import { LoginPage } from './login.po';
 
 describe('spiti-ui App', () => {
-  let page: SpitiUiPage;
+  let loginPage: LoginPage;
 
   beforeEach(() => {
-    page = new SpitiUiPage();
+    loginPage = new LoginPage();
   });
 
-  it('should display all menu links', () => {
-    page.navigateTo();
-    expect(page.getToolbarItem(0)).toEqual('Login');
-    expect(page.getToolbarItem(1)).toEqual('Editor');
+  xit('should display all menu links', () => {
+    loginPage
+      .navigateTo()
+      .enterName('Philippe Morier')
+      .enterEmail('philippe.morier@test.com');
+
+    expect(loginPage.getToolbarItem(0)).toEqual('Login');
+    expect(loginPage.getToolbarItem(1)).toEqual('Editor');
   });
 });
