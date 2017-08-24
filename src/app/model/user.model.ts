@@ -2,7 +2,8 @@ import { IsEmail, IsString, MaxLength, MinLength } from 'class-validator';
 import * as firebase from 'firebase/app';
 
 import { BaseModel } from './base.model';
-import { Form, Model } from './decorator';
+import { Form } from './decorator/form.decorator';
+import { Model } from './decorator/model.decorator';
 
 @Model()
 @Form()
@@ -17,8 +18,11 @@ export class User extends BaseModel {
   @IsString()
   public uid: string;
 
-  public constructor(fireBaseUser: firebase.User) {
+  public constructor(fireBaseUser?: firebase.User) {
     super();
+    if (!fireBaseUser) {
+      return;
+    }
 
     if (fireBaseUser.displayName) {
       this.displayName = fireBaseUser.displayName;

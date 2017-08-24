@@ -16,7 +16,7 @@ export class SessionService {
       .map((user: firebase.User) => new User(user));
   }
 
-  public constructor(public authenticationService: AngularFireAuth) {
+  public constructor(public readonly authenticationService: AngularFireAuth) {
   }
 
   public signIn(email: string, password: string): Observable<User> {
