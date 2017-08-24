@@ -1,9 +1,10 @@
+import { BaseModel } from '../base.model';
+
 export function createConstructor(
   originalConstructor: Function,
-  // tslint:disable-next-line:no-any
-  runAfter: (model: any) => void,
+  runAfter: (model: BaseModel) => void,
 ): Function {
-  const newConstructor = (...args): Function => {
+  const newConstructor = (...args): BaseModel => {
     // Execute original constructor with all of its arguments
     const model = originalConstructor.apply(originalConstructor.prototype, args);
 
