@@ -15,7 +15,6 @@ export class BabylonComponent implements AfterViewInit {
   private engine: BABYLON.Engine;
   private scene: BABYLON.Scene;
   private camera: BABYLON.FreeCamera;
-  private light: BABYLON.Light;
   private selectionVoxel: BABYLON.Mesh;
 
   public ngAfterViewInit(): void {
@@ -33,7 +32,11 @@ export class BabylonComponent implements AfterViewInit {
     this.camera = this.createFreeCamera();
     this.camera.attachControl(this.canvasRef.nativeElement, false);
 
-    this.light = new BABYLON.HemisphericLight('hemisphericLight', new BABYLON.Vector3(0, 1, 0), this.scene);
+    new BABYLON.HemisphericLight(
+      'hemisphericLight',
+      new BABYLON.Vector3(0, 1, 0),
+      this.scene,
+    );
 
     this.addVoxel(BABYLON.Vector3.Zero());
     this.selectionVoxel = this.addVoxel(BABYLON.Vector3.Zero(), SELECTION_VOXEL);
@@ -75,21 +78,30 @@ export class BabylonComponent implements AfterViewInit {
 
   private showSelectionBox(): void {
     const pickResult = this.scene.pick(this.scene.pointerX, this.scene.pointerY);
+    if (!pickResult) {
+      return;
+    }
 
     if (!pickResult.hit) {
       this.selectionVoxel.isVisible = false;
       return;
     }
 
-    if (pickResult.pickedMesh.name === SELECTION_VOXEL) {
+    if (pickResult.pickedMesh && pickResult.pickedMesh.name === SELECTION_VOXEL) {
       return;
     }
 
-    this.selectionVoxel.position = pickResult
-      .pickedMesh
-      .position
-      .add(this.getPositionOffset(pickResult.faceId));
-    this.selectionVoxel.isVisible = true;
+    if (!this.selectionVoxel) {
+      return;
+    }
+
+    if (pickResult.pickedMesh) {
+      this.selectionVoxel.position = pickResult
+        .pickedMesh
+        .position
+        .add(this.getPositionOffset(pickResult.faceId));
+      this.selectionVoxel.isVisible = true;
+    }
   }
 
   private getPositionOffset(faceId: number): BABYLON.Vector3 {
