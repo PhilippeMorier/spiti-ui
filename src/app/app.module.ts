@@ -2,13 +2,13 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {
-  MdButtonModule,
-  MdCardModule,
-  MdCheckboxModule,
-  MdIconModule,
-  MdInputModule,
-  MdToolbarModule,
-  MdTooltipModule,
+  MatButtonModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatIconModule,
+  MatInputModule,
+  MatToolbarModule,
+  MatTooltipModule,
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -44,13 +44,13 @@ import { FormComponent } from './shared/form/form.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    MdCardModule,
-    MdCheckboxModule,
-    MdButtonModule,
-    MdIconModule,
-    MdInputModule,
-    MdToolbarModule,
-    MdTooltipModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+    MatToolbarModule,
+    MatTooltipModule,
     ReactiveFormsModule,
   ],
   providers: [

@@ -1,8 +1,8 @@
-<md-toolbar>
-  <a md-button routerLink="login" i18n="Login title|Menu item">Login</a>
-  <a md-button routerLink="editor" i18n="Editor title|Menu item">Editor</a>
+<mat-toolbar>
+  <a mat-button routerLink="login" i18n="Login title|Menu item">Login</a>
+  <a mat-button routerLink="editor" i18n="Editor title|Menu item">Editor</a>
   <span class="spacer"></span>
-  <md-icon [mdTooltip]="(user | async)?.email">more_vert</md-icon>
-  <a routerLink="account"><md-icon>account_box</md-icon></a>
-</md-toolbar>
+  <mat-icon [matTooltip]="(user | async)?.email">more_vert</mat-icon>
+  <a routerLink="account"><mat-icon>account_box</mat-icon></a>
+</mat-toolbar>
 <router-outlet></router-outlet>

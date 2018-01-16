@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MdButtonModule, MdCardModule, MdInputModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatInputModule } from '@angular/material';
 
 import { AccountRoutingModule } from './account-routing.module';
 import { AccountComponent } from './account.component';
@@ -12,9 +12,9 @@ import { AccountComponent } from './account.component';
   imports: [
     CommonModule,
     AccountRoutingModule,
-    MdButtonModule,
-    MdCardModule,
-    MdInputModule,
+    MatButtonModule,
+    MatCardModule,
+    MatInputModule,
   ],
 })
 export class AccountModule {

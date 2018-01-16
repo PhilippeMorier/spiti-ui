@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'spt-editor',
@@ -7,9 +8,15 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
   templateUrl: './editor.component.html',
 })
 export class EditorComponent {
-  public subscriptions: FirebaseListObservable<any[]>;
+  public subscriptions: Observable<Subscription[]>;
 
   public constructor(db: AngularFireDatabase) {
-    this.subscriptions = db.list('/subscriptions');
+    this.subscriptions = db
+      .list<Subscription>('/subscriptions')
+      .valueChanges();
   }
+}
+
+interface Subscription {
+  name: string;
 }

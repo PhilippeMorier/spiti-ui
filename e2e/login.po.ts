@@ -10,7 +10,7 @@ export class LoginPage extends BasePage {
   }
 
   public getToolbarItem(index: number): promise.Promise<string> {
-    return element.all(by.css('md-toolbar a'))
+    return element.all(by.css('mat-toolbar a'))
       .get(index)
       .getText();
   }

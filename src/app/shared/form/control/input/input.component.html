@@ -1,11 +1,11 @@
-<md-input-container
+<mat-input-container
   [formGroup]="group"
   [hintLabel]="errorMessage | async"
 >
-  <input mdInput
+  <input matInput
          [name]="config.property"
          [formControlName]="config.property"
          [placeholder]="config.placeholderText"
          [type]="config.type"
   >
-</md-input-container>
+</mat-input-container>

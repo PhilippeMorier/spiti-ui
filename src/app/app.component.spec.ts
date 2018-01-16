@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormGroup } from '@angular/forms';
-import { MdIconModule, MdToolbarModule, MdTooltipModule } from '@angular/material';
+import { MdIconModule, MdToolbarModule, matTooltipModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Observable } from 'rxjs/Observable';
 
@@ -38,7 +38,7 @@ describe('AppComponent', () => {
         RouterTestingModule,
         MdToolbarModule,
         MdIconModule,
-        MdTooltipModule,
+        matTooltipModule,
       ],
       providers: [
         { provide: SessionService, useValue: mockSessionService },
@@ -59,7 +59,7 @@ describe('AppComponent', () => {
 
   it('should render menu links', () => {
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelectorAll('md-toolbar a').item(0).textContent).toEqual('Login');
-    expect(compiled.querySelectorAll('md-toolbar a').item(1).textContent).toEqual('Editor');
+    expect(compiled.querySelectorAll('mat-toolbar a').item(0).textContent).toEqual('Login');
+    expect(compiled.querySelectorAll('mat-toolbar a').item(1).textContent).toEqual('Editor');
   });
 });
