@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import * as BABYLON from 'babylonjs';
 
+import { Key } from './key.enum';
+
 const SELECTION_VOXEL = 'selectionVoxel';
 
 @Component({
@@ -45,10 +47,10 @@ export class BabylonComponent implements AfterViewInit {
 
   private createFreeCamera(): BABYLON.FreeCamera {
     const camera = new BABYLON.FreeCamera('freeCamera', new BABYLON.Vector3(0, 5, -10), this.scene);
-    camera.keysUp.push(87); // W
-    camera.keysLeft.push(65); // A
-    camera.keysDown.push(83); // S
-    camera.keysRight.push(68); // D
+    camera.keysUp.push(Key.W);
+    camera.keysLeft.push(Key.A);
+    camera.keysDown.push(Key.S);
+    camera.keysRight.push(Key.D);
     camera.setTarget(BABYLON.Vector3.Zero());
 
     return camera;
