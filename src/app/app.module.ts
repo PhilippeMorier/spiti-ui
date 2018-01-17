@@ -1,6 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import {
   MatButtonModule,
   MatCardModule,
@@ -43,7 +43,7 @@ import { FormComponent } from './shared/form/form.component';
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
-    HttpModule,
+    HttpClient,
     MatCardModule,
     MatCheckboxModule,
     MatButtonModule,
