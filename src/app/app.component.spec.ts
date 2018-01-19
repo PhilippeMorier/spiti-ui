@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormGroup } from '@angular/forms';
-import { MdIconModule, MdToolbarModule, matTooltipModule } from '@angular/material';
+import { MatIconModule, MatToolbarModule, MatTooltipModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Observable } from 'rxjs/Observable';
 
@@ -36,9 +36,9 @@ describe('AppComponent', () => {
       ],
       imports: [
         RouterTestingModule,
-        MdToolbarModule,
-        MdIconModule,
-        matTooltipModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatTooltipModule,
       ],
       providers: [
         { provide: SessionService, useValue: mockSessionService },
@@ -53,6 +53,7 @@ describe('AppComponent', () => {
   });
 
   it('should create the app', () => {
+    expect(component).toBeTruthy();
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });

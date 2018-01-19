@@ -25,6 +25,16 @@ export class LoginPage extends BasePage {
     return this;
   }
 
+  public clickSignIn(): this {
+    this.clickOnButton('signIn');
+    return this;
+  }
+
+  private clickOnButton(name: string): void {
+    browser.element(by.css(`button[name='${name}']`))
+      .click();
+  }
+
   private sendKeysToInput(input: string, name: string): void {
     browser.element(by.css(`input[name='${name}']`))
       .sendKeys(input);

@@ -17,6 +17,6 @@ export class EditorComponent {
   }
 }
 
-interface Subscription {
+export interface Subscription {
   name: string;
 }
