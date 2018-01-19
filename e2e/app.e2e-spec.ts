@@ -1,13 +1,20 @@
+import { EditorPage } from './editor.po';
 import { LoginPage } from './login.po';
 
 describe('spiti-ui App', () => {
   let loginPage: LoginPage;
+  let editorPage;
 
   beforeEach(() => {
     loginPage = new LoginPage();
+    editorPage = new EditorPage();
   });
 
-  xit('should display all menu links', () => {
+  it('should display all menu links', () => {
+    loginPage.navigateTo();
+    editorPage.navigateTo();
+    loginPage.navigateTo();
+    loginPage.clickSignIn();
     loginPage
       .navigateTo()
       .enterName('Philippe Morier')

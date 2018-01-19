@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormGroup } from '@angular/forms';
-import { MdCardModule } from '@angular/material';
+import { MatCardModule } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 
 import { User } from '../model/user.model';
@@ -31,7 +31,7 @@ describe('AccountComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
         declarations: [ AccountComponent ],
-        imports: [ MdCardModule ],
+        imports: [ MatCardModule ],
         providers: [
           { provide: SessionService, useValue: mockSessionService },
         ],

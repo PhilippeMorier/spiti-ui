@@ -1,6 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MdButtonModule, MdCardModule, MdCheckboxModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatCheckboxModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
@@ -32,9 +32,9 @@ describe('LoginComponent', () => {
         declarations: [ LoginComponent ],
         imports: [
           BrowserAnimationsModule,
-          MdButtonModule,
-          MdCardModule,
-          MdCheckboxModule,
+          MatButtonModule,
+          MatCardModule,
+          MatCheckboxModule,
         ],
         providers: [
           { provide: SessionService, useValue: mockSessionService },
