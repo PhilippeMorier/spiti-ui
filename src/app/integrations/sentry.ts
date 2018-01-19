@@ -8,6 +8,7 @@ import { SessionService } from '../session.service';
 export const RAVEN = new InjectionToken('Raven');
 
 interface RavenUser {
+  [key: string]: string | number | boolean | null | void;
   id?: string;
   username?: string;
   email?: string;
