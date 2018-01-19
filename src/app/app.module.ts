@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
@@ -42,8 +42,8 @@ import { FormComponent } from './shared/form/form.component';
     AngularFireModule.initializeApp(environment.firebase),
     BrowserAnimationsModule,
     BrowserModule,
+    HttpClientModule,
     FormsModule,
-    HttpClient,
     MatCardModule,
     MatCheckboxModule,
     MatButtonModule,
