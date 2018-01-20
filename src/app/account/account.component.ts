@@ -10,7 +10,7 @@ import { SessionService } from '../session.service';
   templateUrl: './account.component.html',
 })
 export class AccountComponent {
-  public user: Observable<User>;
+  public user: Observable<User | undefined>;
 
   public constructor(session: SessionService) {
     this.user = session.currentlySignedInUser();

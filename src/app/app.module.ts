@@ -13,8 +13,8 @@ import {
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { environment } from '../environments/environment-source';
 import { AppRoutingModule } from './app-routing.module';
@@ -40,6 +40,8 @@ import { FormComponent } from './shared/form/form.component';
   imports: [
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
     BrowserAnimationsModule,
     BrowserModule,
     HttpClientModule,
@@ -54,8 +56,6 @@ import { FormComponent } from './shared/form/form.component';
     ReactiveFormsModule,
   ],
   providers: [
-    AngularFireAuth,
-    AngularFireDatabase,
     Fullstory,
     ...SENTRY_PROVIDERS,
     { provide: ErrorHandler, useClass: Sentry },

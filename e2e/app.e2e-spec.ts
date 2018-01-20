@@ -3,7 +3,7 @@ import { LoginPage } from './login.po';
 
 describe('spiti-ui App', () => {
   let loginPage: LoginPage;
-  let editorPage;
+  let editorPage: EditorPage;
 
   beforeEach(() => {
     loginPage = new LoginPage();
@@ -13,10 +13,8 @@ describe('spiti-ui App', () => {
   it('should display all menu links', () => {
     loginPage.navigateTo();
     editorPage.navigateTo();
-    loginPage.navigateTo();
-    loginPage.clickSignIn();
-    loginPage
-      .navigateTo()
+    loginPage.navigateTo()
+      .clickSignIn()
       .enterName('Philippe Morier')
       .enterEmail('philippe.morier@test.com');
 

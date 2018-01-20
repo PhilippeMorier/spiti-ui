@@ -13,7 +13,7 @@ import { InputComponent } from '../shared/form/control/input/input.component';
   templateUrl: './login.component.html',
 })
 export class LoginComponent {
-  public user: Observable<User>;
+  public user: Observable<User | undefined>;
   public config: [ ControlConfig ] = [
     {
       component: InputComponent,
