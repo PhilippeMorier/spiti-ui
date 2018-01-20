@@ -15,8 +15,7 @@ export class SessionService {
 
   public currentlySignedInUser(): Observable<User> {
     return this.authenticationService.authState
-      .filter((user: FirebaseUser) => !!user)
-      .map((user: FirebaseUser) => new User(user));
+      .map((user: FirebaseUser) => (user) ? new User(user) : undefined);
   }
 
   public signIn(email: string, password: string): Observable<User> {
