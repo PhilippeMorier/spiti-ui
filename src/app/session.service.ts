@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
+import { User as FirebaseUser } from 'firebase/app';
 import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/map';
@@ -10,19 +10,19 @@ import { User } from './model/user.model';
 
 @Injectable()
 export class SessionService {
-  public currentlySignedInUser(): Observable<User> {
-    return this.authenticationService.authState
-      .filter((user: firebase.User) => !!user)
-      .map((user: firebase.User) => new User(user));
+  public constructor(public readonly authenticationService: AngularFireAuth) {
   }
 
-  public constructor(public readonly authenticationService: AngularFireAuth) {
+  public currentlySignedInUser(): Observable<User> {
+    return this.authenticationService.authState
+      .filter((user: FirebaseUser) => !!user)
+      .map((user: FirebaseUser) => new User(user));
   }
 
   public signIn(email: string, password: string): Observable<User> {
     return Observable
       .fromPromise(this.authenticationService.auth.signInWithEmailAndPassword(email, password))
-      .map((user: firebase.User) => new User(user))
+      .map((user: FirebaseUser) => new User(user))
       .first();
   }
 
