@@ -13,11 +13,6 @@ export const config: Config = {
   // https://github.com/angular/angularfire2/issues/225#issuecomment-318490125
   allScriptsTimeout: 32000,
   baseUrl: 'http://localhost:8080/',
-  beforeLaunch: () => {
-    register({
-      project: 'e2e/tsconfig.e2e.json',
-    });
-  },
   directConnect: true,
   framework: 'jasmine',
   jasmineNodeOpts: {
@@ -43,6 +38,9 @@ export const config: Config = {
     './e2e/**/*.e2e-spec.ts',
   ],
   onPrepare(): void {
+    register({
+      project: 'e2e/tsconfig.e2e.json',
+    });
     jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
   },
 };
