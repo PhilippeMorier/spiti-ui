@@ -12,11 +12,11 @@ export class EditorComponent {
   private db: AngularFireDatabase;
 
   public constructor(
-    private readonly injector: Injector,
-    private readonly zone: NgZone,
+    injector: Injector,
+    zone: NgZone,
   ) {
-    this.zone.runOutsideAngular(() => {
-      this.db = this.injector.get(AngularFireDatabase);
+    zone.runOutsideAngular(() => {
+      this.db = injector.get(AngularFireDatabase);
     });
 
     this.subscriptions = this.db

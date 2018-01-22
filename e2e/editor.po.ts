@@ -1,5 +1,4 @@
-import { by, element } from 'protractor';
-import { promise } from 'selenium-webdriver';
+import { by, element, ElementFinder } from 'protractor';
 
 import { AppRoute } from '../src/app/app-routing.module';
 import { BasePage } from './basePage.po';
@@ -9,9 +8,8 @@ export class EditorPage extends BasePage {
     super(AppRoute.Editor);
   }
 
-  public getListItem(index: number): promise.Promise<string> {
+  public getListItem(index: number): ElementFinder {
     return element.all(by.css('li'))
-      .get(index)
-      .getText();
+      .get(index);
   }
 }

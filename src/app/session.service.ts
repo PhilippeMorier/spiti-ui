@@ -13,13 +13,13 @@ export class SessionService {
   private authenticationService: AngularFireAuth;
 
   public constructor(
-    private readonly injector: Injector,
+    injector: Injector,
     zone: NgZone,
   ) {
     // https://github.com/angular/protractor/issues/4300#issuecomment-346926872
     zone.runOutsideAngular(() => {
       // https://stackoverflow.com/a/42462579
-      this.authenticationService = this.injector.get(AngularFireAuth);
+      this.authenticationService = injector.get(AngularFireAuth);
     });
   }
 
