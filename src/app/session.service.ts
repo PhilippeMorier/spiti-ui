@@ -11,24 +11,21 @@ import { User } from './model/user.model';
 @Injectable()
 export class SessionService {
   private authenticationService: AngularFireAuth;
-  private signedInUser: Observable<FirebaseUser | null>;
 
   public constructor(
     private readonly injector: Injector,
-    private readonly zone: NgZone,
+    zone: NgZone,
   ) {
     // https://github.com/angular/protractor/issues/4300#issuecomment-346926872
-    this.zone.runOutsideAngular(() => {
+    zone.runOutsideAngular(() => {
       // https://stackoverflow.com/a/42462579
       this.authenticationService = this.injector.get(AngularFireAuth);
     });
-
-    this.signedInUser = this.attachToZone(this.authenticationService.authState, zone);
   }
 
   public currentlySignedInUser(): Observable<User | undefined> {
-    return this
-      .signedInUser
+    return this.authenticationService
+      .authState
       .map((user: FirebaseUser) => (user) ? new User(user) : undefined);
   }
 
@@ -58,15 +55,5 @@ export class SessionService {
           .updateProfile({ displayName: displayName, photoURL: null }),
       )
       .first();
-  }
-
-  // https://github.com/apollographql/apollo-angular/issues/320#issuecomment-327436087
-  private attachToZone<T>(obs: Observable<T>, zone: NgZone): Observable<T> {
-    return Observable.create(observer => {
-      const onNext = (value) => zone.run(() => observer.next(value));
-      const onError = (e) => zone.run(() => observer.error(e));
-      const onComplete = () => zone.run(() => observer.complete());
-      return obs.subscribe(onNext, onError, onComplete);
-    });
   }
 }

@@ -1,5 +1,4 @@
-import { browser, by, element } from 'protractor';
-import { promise } from 'selenium-webdriver';
+import { browser, by, element, ElementFinder } from 'protractor';
 
 import { AppRoute } from '../src/app/app-routing.module';
 import { BasePage } from './basePage.po';
@@ -9,10 +8,9 @@ export class LoginPage extends BasePage {
     super(AppRoute.Login);
   }
 
-  public getToolbarItem(index: number): promise.Promise<string> {
+  public getToolbarItem(index: number): ElementFinder {
     return element.all(by.css('mat-toolbar a'))
-      .get(index)
-      .getText();
+      .get(index);
   }
 
   public enterName(name: string): this {
