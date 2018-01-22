@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'spt-editor',
-  styleUrls: ['./editor.component.scss'],
+  styleUrls: [ './editor.component.scss' ],
   templateUrl: './editor.component.html',
 })
 export class EditorComponent {
