@@ -1,5 +1,7 @@
 # SpitiUi
 
+CircleCI: [![CircleCI](https://circleci.com/gh/PhilippeMorier/spiti-ui.svg?style=svg)](https://circleci.com/gh/PhilippeMorier/spiti-ui)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0
 by using `ng new spiti-ui --prefix spt --style scss --skip-git true --routing true` as command.
 
