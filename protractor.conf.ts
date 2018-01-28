@@ -24,9 +24,9 @@ export const config: Config = {
     // },
     {
       'browserName': 'chrome',
-      'chromeOptions': {
-        'args': [ 'headless', 'no-sandbox' ],
-      },
+      // 'chromeOptions': {
+      //   'args': [ 'headless', 'no-sandbox' ],
+      // },
     },
   ],
   specs: [
