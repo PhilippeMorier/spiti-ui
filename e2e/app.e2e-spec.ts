@@ -21,7 +21,7 @@ describe('spiti-ui App', () => {
     expect(loginPage.getToolbarItem(1).getText()).toEqual('Editor');
   });
 
-  it('should display all list items', () => {
+  xit('should display all list items', () => {
     editorPage.navigateTo();
 
     expect(editorPage.getListItem(0).getText()).toEqual('ApplePulp');
