@@ -26,13 +26,6 @@ module.exports = function (config: karma.Config): void {
       fixWebpackSourcePaths: true,
       reports: ['html', 'lcovonly'],
     },
-    // https://github.com/karma-runner/karma-chrome-launcher/issues/83#issuecomment-280423282
-    customLaunchers: {
-      HeadlessChrome: {
-        base: 'Chrome',
-        flags: ['--headless', '--disable-gpu', '--remote-debugging-port=9222'],
-      },
-    },
     files: [
       {pattern: './src/test.ts', watched: false},
       {
