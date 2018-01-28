@@ -10,7 +10,7 @@
     "build": "npm run build:development",
     "build:development": "ng build --env=development",
     "test": "ng test",
-    "test:ci": "ng test --browsers HeadlessChrome Firefox",
+    "test:ci": "ng test --single-run",
     "lint": "ng lint --format codeFrame",
     "pree2e": "npm run tsc protractor.conf.ts",
     "postinstall": "check-node-version --package",
