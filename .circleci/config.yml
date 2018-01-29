@@ -20,7 +20,7 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - persist_to_workspace:
-          root: ~
+          root: "~"
           paths: spiti-ui
 
   run_unit_test:
