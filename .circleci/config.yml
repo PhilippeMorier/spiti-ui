@@ -35,14 +35,14 @@ jobs:
     steps:
       - run: npm run e2e
 
-  workflows:
-    version: 2
-    build_and_test:
-      jobs:
-      - checkout_and_install_dependencies
-      - run_unit_test:
-          requires:
-          - checkout_and_install_dependencies
-      - run_e2e_test:
-          requires:
-          - run_unit_test
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+    - checkout_and_install_dependencies
+    - run_unit_test:
+        requires:
+        - checkout_and_install_dependencies
+    - run_e2e_test:
+        requires:
+        - run_unit_test
