@@ -23,7 +23,6 @@ jobs:
       - image: circleci/node:9.4.0-browsers
     working_directory: ~/spiti-ui
     steps:
-      - checkout
       - run: npm run test:ci
 
   run_e2e_test:
@@ -31,7 +30,6 @@ jobs:
       - image: circleci/node:9.4.0-browsers
     working_directory: ~/spiti-ui
     steps:
-      - checkout
       - run: npm run e2e
 
 workflows:
