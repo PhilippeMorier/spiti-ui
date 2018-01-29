@@ -6,6 +6,8 @@ jobs:
     working_directory: ~/spiti-ui
     steps:
       - checkout
+      - attach_workspace:
+          at: ~/spiti-ui
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -17,12 +19,18 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+      - persist_to_workspace:
+          root: .
+          paths: node_modules
 
   run_unit_test:
     docker:
       - image: circleci/node:9.4.0-browsers
     working_directory: ~/spiti-ui
     steps:
+      - checkout
+      - attach_workspace:
+          at: ~/spiti-ui
       - run: npm run test:ci
 
   run_e2e_test:
@@ -30,6 +38,9 @@ jobs:
       - image: circleci/node:9.4.0-browsers
     working_directory: ~/spiti-ui
     steps:
+      - checkout
+      - attach_workspace:
+          at: ~/spiti-ui
       - run: npm run e2e
 
 workflows:
