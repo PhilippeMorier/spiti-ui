@@ -24,14 +24,12 @@ jobs:
   run_unit_test:
     docker:
       - image: circleci/node:9.4.0-browsers
-    working_directory: ~/repo/spiti-ui
     steps:
       - run: npm run test:ci
 
   run_e2e_test:
     docker:
       - image: circleci/node:9.4.0-browsers
-    working_directory: ~/repo/spiti-ui
     steps:
       - run: npm run e2e
 
