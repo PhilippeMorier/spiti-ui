@@ -1,6 +1,6 @@
 import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@angular/core';
+import { BaseModel } from '../../model/base.model';
 
-import { User } from '../../model/user.model';
 import { Control, ControlConfig } from './control/control';
 import { FormControlHostDirective } from './form-control-host.directive';
 
@@ -14,7 +14,7 @@ import { FormControlHostDirective } from './form-control-host.directive';
 export class FormComponent implements OnInit {
 
   @Input()
-  public model: User;
+  public model: BaseModel;
 
   @Input()
   public configs: [ ControlConfig ];

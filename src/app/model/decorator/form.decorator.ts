@@ -2,6 +2,7 @@ import { AbstractControl, FormBuilder, FormGroup, ValidatorFn } from '@angular/f
 import { getFromContainer, Validator } from 'class-validator';
 import { MetadataStorage } from 'class-validator/metadata/MetadataStorage';
 import { ValidationMetadata } from 'class-validator/metadata/ValidationMetadata';
+import { BaseModel } from '../base.model';
 
 import { createConstructor } from './create-constructor';
 
@@ -20,7 +21,7 @@ export function Form(): ClassDecorator {
   };
 }
 
-function buildFormGroup(model: any, validations: ValidationMetadata[]): FormGroup {
+function buildFormGroup(model: BaseModel, validations: ValidationMetadata[]): FormGroup {
   const groupedValidations = getFromContainer(MetadataStorage).groupByPropertyName(validations);
   const controlsConfig = {};
   for (const property in groupedValidations) {
