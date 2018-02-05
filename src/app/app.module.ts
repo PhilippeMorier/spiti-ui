@@ -26,12 +26,14 @@ import { SessionService } from './session.service';
 import { InputComponent } from './shared/form/control/input/input.component';
 import { FormControlHostDirective } from './shared/form/form-control-host.directive';
 import { FormComponent } from './shared/form/form.component';
+import { SignUpComponent } from './signup/sign-up.component';
 
 @NgModule({
   bootstrap: [ AppComponent ],
   declarations: [
     AppComponent,
     LoginComponent,
+    SignUpComponent,
     FormComponent,
     InputComponent,
     FormControlHostDirective,

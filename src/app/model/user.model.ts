@@ -1,12 +1,8 @@
 import { IsEmail, IsString, MaxLength, MinLength } from 'class-validator';
 import * as firebase from 'firebase/app';
 
-import { BaseModel } from './base.model';
-import { Form } from './decorator/form.decorator';
-import { Model } from './decorator/model.decorator';
+import { BaseModel} from './base.model';
 
-@Model()
-@Form()
 export class User extends BaseModel {
   @MaxLength(10, { message: 'Max length is 10 characters.' })
   public displayName?: string;
