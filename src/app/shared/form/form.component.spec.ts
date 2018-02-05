@@ -2,6 +2,7 @@ import { Component, NgModule } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { User } from '../../model/user.model';
 
 import { Control, ControlConfig } from './control/control';
 import { InputType } from './control/input-type';
@@ -48,12 +49,11 @@ describe('FormComponent', () => {
     fixture = TestBed.createComponent(FormComponent);
     component = fixture.componentInstance;
     group = new FormGroup({});
-    component.model = {
-      displayName: 'Philippe',
-      email: 'philippe@test.com',
-      formGroup: group,
-      uid: '4242',
-    };
+    const mockUser = new User();
+    mockUser.displayName = 'Philippe';
+    mockUser.email = 'philippe@test.com';
+    mockUser.uid = '4242';
+    component.model = mockUser;
     config = {
       component: DummyComponent,
       placeholderText: 'Name',

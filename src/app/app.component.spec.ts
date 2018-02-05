@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormGroup } from '@angular/forms';
 import { MatIconModule, MatToolbarModule, MatTooltipModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Observable } from 'rxjs/Observable';
@@ -15,12 +14,11 @@ describe('AppComponent', () => {
   let mockUser: User;
 
   beforeEach(() => {
-    mockUser = {
-      displayName: 'Philippe',
-      email: 'philippe@test.com',
-      formGroup: new FormGroup({}),
-      uid: '4242',
-    };
+    mockUser = new User();
+    mockUser.displayName = 'Philippe';
+    mockUser.email = 'philippe@test.com';
+    mockUser.uid = '4242';
+
     mockSessionService = jasmine.createSpyObj<SessionService>(
       'mockSessionService',
       [ 'currentlySignedInUser' ],
