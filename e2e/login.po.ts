@@ -5,7 +5,7 @@ import { BasePage } from './basePage.po';
 
 export class LoginPage extends BasePage {
   public constructor() {
-    super(AppRoute.Login);
+    super(AppRoute.SignIn);
   }
 
   public getToolbarItem(index: number): ElementFinder {

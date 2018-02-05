@@ -58,7 +58,7 @@ describe('AppComponent', () => {
 
   it('should render menu links', () => {
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelectorAll('mat-toolbar a').item(0).textContent).toEqual('Login');
+    expect(compiled.querySelectorAll('mat-toolbar a').item(0).textContent).toEqual('Sign In');
     expect(compiled.querySelectorAll('mat-toolbar a').item(1).textContent).toEqual('Editor');
   });
 });

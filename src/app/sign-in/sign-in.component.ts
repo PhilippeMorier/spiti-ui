@@ -8,11 +8,11 @@ import { InputType } from '../shared/form/control/input-type';
 import { InputComponent } from '../shared/form/control/input/input.component';
 
 @Component({
-  selector: 'spt-login',
-  styleUrls: [ './login.component.scss' ],
-  templateUrl: './login.component.html',
+  selector: 'spt-sign-in',
+  styleUrls: [ './sign-in.component.scss' ],
+  templateUrl: './sign-in.component.html',
 })
-export class LoginComponent {
+export class SignInComponent {
   public user: Observable<User | undefined>;
   public config: [ ControlConfig ] = [
     {

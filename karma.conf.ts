@@ -17,7 +17,7 @@ module.exports = function (config: karma.Config): void {
     },
     autoWatch: true,
     basePath: '',
-    browsers: ['Chrome', 'Firefox'],
+    browsers: ['Chrome'],
     client: {
       clearContext: false, // leave Jasmine Spec Runner output visible in browser
     },

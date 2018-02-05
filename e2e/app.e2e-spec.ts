@@ -17,7 +17,7 @@ describe('spiti-ui App', () => {
       .enterName('Philippe Morier')
       .enterEmail('philippe.morier@test.com');
 
-    expect(loginPage.getToolbarItem(0).getText()).toEqual('Login');
+    expect(loginPage.getToolbarItem(0).getText()).toEqual('Sign In');
     expect(loginPage.getToolbarItem(1).getText()).toEqual('Editor');
   });
 

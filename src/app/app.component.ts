@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
+import { AppRoute } from './app-routing.module';
 import { User } from './model/user.model';
 import { SessionService } from './session.service';
 
@@ -10,6 +11,7 @@ import { SessionService } from './session.service';
   templateUrl: './app.component.html',
 })
 export class AppComponent {
+  public appRoutes: typeof AppRoute = AppRoute;
   public user: Observable<User | undefined>;
 
   public constructor(session: SessionService) {

@@ -6,11 +6,11 @@ import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
 
 import { SessionService } from '../session.service';
-import { LoginComponent } from './login.component';
+import { SignInComponent } from './sign-in.component';
 
-describe('LoginComponent', () => {
-  let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
+describe('SignInComponent', () => {
+  let component: SignInComponent;
+  let fixture: ComponentFixture<SignInComponent>;
   let mockSessionService: SessionService;
 
   beforeEach(() => {
@@ -29,7 +29,7 @@ describe('LoginComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        declarations: [ LoginComponent ],
+        declarations: [ SignInComponent ],
         imports: [
           BrowserAnimationsModule,
           MatButtonModule,
@@ -45,7 +45,7 @@ describe('LoginComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginComponent);
+    fixture = TestBed.createComponent(SignInComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

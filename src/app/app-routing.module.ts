@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { LoginComponent } from './login/login.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './signup/sign-up.component';
 
 export enum AppRoute {
   SignUp = 'sign-up',
-  Login = 'login',
+  SignIn = 'sign-in',
   Editor = 'editor',
   Account = 'account',
 }
 
 const routes: Routes = [
-  { path: '', redirectTo: AppRoute.Login, pathMatch: 'full' },
-  { path: AppRoute.Login, component: LoginComponent },
+  { path: '', redirectTo: AppRoute.SignIn, pathMatch: 'full' },
+  { path: AppRoute.SignIn, component: SignInComponent },
   { path: AppRoute.SignUp, component: SignUpComponent },
   { path: AppRoute.Editor, loadChildren: './editor/editor.module#EditorModule' },
   { path: AppRoute.Account, loadChildren: './account/account.module#AccountModule' },
