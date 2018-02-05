@@ -31,7 +31,7 @@ describe('FormComponent', () => {
   let component: FormComponent;
   let fixture: ComponentFixture<FormComponent>;
   let config: ControlConfig;
-  let group: FormGroup;
+  let mockUser: User;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -48,8 +48,7 @@ describe('FormComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(FormComponent);
     component = fixture.componentInstance;
-    group = new FormGroup({});
-    const mockUser = new User();
+    mockUser = new User();
     mockUser.displayName = 'Philippe';
     mockUser.email = 'philippe@test.com';
     mockUser.uid = '4242';
@@ -87,6 +86,6 @@ describe('FormComponent', () => {
       .query(By.css('spt-dummy-component'));
     const dummyComponent: DummyComponent = dummyElement.componentInstance;
 
-    expect(dummyComponent.group).toEqual(group);
+    expect(dummyComponent.group).toEqual(mockUser.formGroup);
   });
 });
