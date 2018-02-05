@@ -26,7 +26,7 @@ import { InputComponent } from './shared/form/control/input/input.component';
 import { FormControlHostDirective } from './shared/form/form-control-host.directive';
 import { FormComponent } from './shared/form/form.component';
 import { SignInComponent } from './sign-in/sign-in.component';
-import { SignUpComponent } from './signup/sign-up.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   bootstrap: [ AppComponent ],
