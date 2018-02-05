@@ -11,6 +11,7 @@ import { User } from './model/user.model';
 @Injectable()
 export class SessionService {
   private authenticationService: AngularFireAuth;
+  private authState: Observable<FirebaseUser | null>;
 
   public constructor(
     injector: Injector,
@@ -21,11 +22,12 @@ export class SessionService {
       // https://stackoverflow.com/a/42462579
       this.authenticationService = injector.get(AngularFireAuth);
     });
+
+    this.authState = this.observeInZone(this.authenticationService.authState, zone);
   }
 
   public currentlySignedInUser(): Observable<User | undefined> {
-    return this.authenticationService
-      .authState
+    return this.authState
       .map((user: FirebaseUser) => (user) ? new User(user) : undefined);
   }
 
@@ -56,4 +58,14 @@ export class SessionService {
       )
       .first();
   }
+
+  // https://github.com/apollographql/apollo-angular/issues/320#issuecomment-327436087
+  private observeInZone<T>(observable: Observable<T>, zone: NgZone): Observable<T> {
+    return Observable.create(observer => {
+      const onNext = (value) => zone.run(() => observer.next(value));
+      const onError = (e) => zone.run(() => observer.error(e));
+      const onComplete = () => zone.run(() => observer.complete());
+      return observable.subscribe(onNext, onError, onComplete);
+    });
+  };
 }
