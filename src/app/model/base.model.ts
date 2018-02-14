@@ -41,17 +41,12 @@ export abstract class BaseModel {
 
   private createValidator(validation: ValidationMetadata): ValidatorFn {
     return (control: AbstractControl): { [key: string]: {} } | null => {
-      if (!this.validator[ validation.type ]) {
-        throw new Error(
-          `${validation.type} isn't a function on 'Validator'.
-Please check: https://github.com/pleerock/class-validator#manual-validation`,
+      const isValid: boolean = this
+        .validator
+        .validateValueByMetadata(
+          control.value,
+          validation,
         );
-      }
-
-      const isValid: boolean = this.validator[ validation.type ](
-        control.value,
-        ...validation.constraints,
-      );
       if (isValid) {
         return null;
       }
