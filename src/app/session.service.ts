@@ -31,6 +31,13 @@ export class SessionService {
       .map((user: FirebaseUser) => (user) ? new User(user) : undefined);
   }
 
+  public createUserWithEmailAndPassword(email: string, password: string): Observable<User> {
+    return Observable
+      .fromPromise(this.authenticationService.auth.createUserWithEmailAndPassword(email, password))
+      .map((user: FirebaseUser) => new User(user))
+      .first();
+  }
+
   public signIn(email: string, password: string): Observable<User> {
     return Observable
       .fromPromise(this.authenticationService.auth.signInWithEmailAndPassword(email, password))

@@ -1,18 +1,24 @@
 import { IsEmail, IsString, MaxLength, MinLength } from 'class-validator';
 import * as firebase from 'firebase/app';
 
-import { BaseModel} from './base.model';
+import { BaseModel } from './base.model';
 
 export class User extends BaseModel {
   @MaxLength(10, { message: 'Max length is 10 characters.' })
-  public displayName?: string;
+  public displayName: string;
 
   @IsEmail({}, { message: 'Invalid email.' })
   @MinLength(4, { message: 'Min length is 4 characters.' })
-  public email?: string;
+  public email: string;
 
   @IsString()
   public uid: string;
+
+  @MinLength(4, { message: 'Min length is 4 characters.' })
+  public password?: string;
+
+  @MinLength(6)
+  public repeatedPassword?: string;
 
   public constructor(fireBaseUser?: firebase.User) {
     super();
