@@ -1,12 +1,23 @@
 import { AbstractControl, FormBuilder, FormGroup, ValidatorFn } from '@angular/forms';
-import { getFromContainer, Validator } from 'class-validator';
+import { getFromContainer, validate, ValidationError, Validator } from 'class-validator';
 import { MetadataStorage } from 'class-validator/metadata/MetadataStorage';
 import { ValidationMetadata } from 'class-validator/metadata/ValidationMetadata';
+import { Observable } from 'rxjs/Observable';
 
 export abstract class BaseModel {
 
   private form: FormGroup;
   private validator: Validator = new Validator();
+
+  public updateFromForm(): void {
+    for (const property in this.formGroup.value) {
+      this[ property ] = this.formGroup.value[ property ];
+    }
+  }
+
+  public validate(): Observable<ValidationError[]> {
+    return Observable.fromPromise(validate(this));
+  }
 
   public get formGroup(): FormGroup {
     if (this.form) {

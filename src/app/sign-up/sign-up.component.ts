@@ -14,27 +14,26 @@ import { InputComponent } from '../shared/form/control/input/input.component';
 export class SignUpComponent {
   public user: User = new User();
   public config: [ ControlConfig ] = [ {
-      component: InputComponent,
-      placeholderText: 'Name',
-      property: 'displayName',
-      type: InputType.TEXT,
-    }, {
-      component: InputComponent,
-      placeholderText: 'Email',
-      property: 'email',
-      type: InputType.EMAIL,
-    }, {
-      component: InputComponent,
-      placeholderText: 'Password',
-      property: 'password',
-      type: InputType.PASSWORD,
-    }, {
-      component: InputComponent,
-      placeholderText: 'Repeat password',
-      property: 'repeatedPassword',
-      type: InputType.PASSWORD,
-    },
-  ];
+    component: InputComponent,
+    placeholderText: 'Name',
+    property: 'displayName',
+    type: InputType.TEXT,
+  }, {
+    component: InputComponent,
+    placeholderText: 'Email',
+    property: 'email',
+    type: InputType.EMAIL,
+  }, {
+    component: InputComponent,
+    placeholderText: 'Password',
+    property: 'password',
+    type: InputType.PASSWORD,
+  }, {
+    component: InputComponent,
+    placeholderText: 'Repeat password',
+    property: 'repeatedPassword',
+    type: InputType.PASSWORD,
+  } ];
 
   public constructor(private readonly session: SessionService) {
   }

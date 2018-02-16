@@ -17,7 +17,7 @@ export class User extends BaseModel {
   @MinLength(4, { message: 'Min length is 4 characters.' })
   public password?: string;
 
-  @MinLength(6)
+  @MinLength(4, { message: 'Min length is 4 characters.' })
   public repeatedPassword?: string;
 
   public constructor(fireBaseUser?: firebase.User) {
