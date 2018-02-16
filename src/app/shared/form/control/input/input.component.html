@@ -1,6 +1,5 @@
 <mat-input-container
   [formGroup]="group"
-  [hintLabel]="errorMessage | async"
 >
   <input matInput
          [name]="config.property"
@@ -8,4 +7,5 @@
          [placeholder]="config.placeholderText"
          [type]="config.type"
   >
+  <mat-error *ngIf="errorMessage | async as error">{{ error }}</mat-error>
 </mat-input-container>
