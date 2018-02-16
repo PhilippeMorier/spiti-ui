@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
+import { AppRoute } from '../app-route.enum';
 import { User } from '../model/user.model';
 import { SessionService } from '../session.service';
 import { ControlConfig } from '../shared/form/control/control';
@@ -14,11 +16,6 @@ import { InputComponent } from '../shared/form/control/input/input.component';
 export class SignUpComponent {
   public user: User = new User();
   public config: [ ControlConfig ] = [ {
-    component: InputComponent,
-    placeholderText: 'Name',
-    property: 'displayName',
-    type: InputType.TEXT,
-  }, {
     component: InputComponent,
     placeholderText: 'Email',
     property: 'email',
@@ -35,10 +32,17 @@ export class SignUpComponent {
     type: InputType.PASSWORD,
   } ];
 
-  public constructor(private readonly session: SessionService) {
+  public constructor(
+    private readonly router: Router,
+    private readonly session: SessionService,
+  ) {
   }
 
   public createUserWithEmailAndPassword(email: string, password: string): void {
-    this.session.createUserWithEmailAndPassword(email, password);
+    this.session
+      .createUserWithEmailAndPassword(email, password)
+      .subscribe(
+        () => this.router.navigate([AppRoute.Account]),
+      );
   }
 }

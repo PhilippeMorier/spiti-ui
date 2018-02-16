@@ -13,7 +13,14 @@
   </mat-card-content>
   <mat-card-actions align="end">
     <div>{{ user.formGroup.value | json }}</div>
-    <button name="signIn" mat-raised-button color="primary">
+    <button
+      name="signUp"
+      (click)="createUserWithEmailAndPassword(
+        user.formGroup.value.email,
+        user.formGroup.value.password
+      )"
+      mat-raised-button color="primary"
+    >
       SIGN UP
     </button>
   </mat-card-actions>
