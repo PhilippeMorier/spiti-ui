@@ -1,15 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { AppRoute } from './app-route.enum';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-
-export enum AppRoute {
-  SignUp = 'sign-up',
-  SignIn = 'sign-in',
-  Editor = 'editor',
-  Account = 'account',
-}
 
 const routes: Routes = [
   { path: '', redirectTo: AppRoute.SignIn, pathMatch: 'full' },

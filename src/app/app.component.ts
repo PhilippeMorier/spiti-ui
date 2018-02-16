@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { AppRoute } from './app-routing.module';
+import { AppRoute } from './app-route.enum';
 import { User } from './model/user.model';
 import { SessionService } from './session.service';
 
