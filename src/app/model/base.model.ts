@@ -52,6 +52,21 @@ export abstract class BaseModel {
 
   private createValidator(validation: ValidationMetadata): ValidatorFn {
     return (control: AbstractControl): { [key: string]: {} } | null => {
+      // if (validation.type === ValidationTypes.CUSTOM_VALIDATION) {
+      //   let constraints = getFromContainer(MetadataStorage)
+      //     .getTargetValidatorConstraints(validation.constraintCls);
+      //   console.log('=============', model);
+      //   const validationArguments: ValidationArguments = {
+      //     constraints: validation.constraints,
+      //     object: model,
+      //     property: validation.propertyName,
+      //     targetName: this.constructor ? this.constructor.name : undefined,
+      //     value: control.value,
+      //   };
+      //
+      //   let isGood = constraints[0].instance.validate(control.value, validationArguments);
+      // }
+
       const isValid: boolean = this
         .validator
         .validateValueByMetadata(
