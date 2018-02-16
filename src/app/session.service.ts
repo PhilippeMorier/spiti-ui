@@ -74,5 +74,5 @@ export class SessionService {
       const onComplete = () => zone.run(() => observer.complete());
       return observable.subscribe(onNext, onError, onComplete);
     });
-  };
+  }
 }
