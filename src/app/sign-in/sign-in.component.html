@@ -4,28 +4,24 @@
       <h1>Login</h1>
     </mat-card-title>
   </mat-card-header>
-  <mat-card-content *ngIf="(user | async) as user">
-    <mat-checkbox>Stay logged in</mat-checkbox>
 
+  <mat-card-content>
     <spt-form
-    [model]="user"
-    [configs]="config"
+      [model]="user"
+      [configs]="config"
     >
     </spt-form>
-
+    <mat-checkbox>Stay logged in</mat-checkbox>
   </mat-card-content>
+
   <mat-card-actions align="end">
-    <button mat-button (click)="throwErrorForSentry()">Cancel</button>
-    <button name="signIn" mat-raised-button color="primary"
-            (click)="signIn('morier.dev@outlook.com', 'morier.dev')">
+    <button mat-button (click)="throwErrorForSentry()">Error</button>
+    <button name="signIn"
+            mat-raised-button
+            color="primary"
+            (click)="signIn(user.email, user.password)"
+    >
       SIGN IN
     </button>
   </mat-card-actions>
 </mat-card>
-<ng-container *ngIf="(user | async) as user">
-  <p>{{ user.uid }}</p>
-  <p>{{ user.email }}</p>
-  <p>{{ user.displayName }}</p>
-  <button mat-button (click)="signOut()">Sign Out</button>
-  <button mat-button (click)="setDisplayName()">Set display name</button>
-</ng-container>
