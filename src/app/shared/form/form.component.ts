@@ -33,6 +33,17 @@ export class FormComponent implements OnInit {
       const inputComponent = this.formHost.viewContainerRef.createComponent(inputComponentFactory);
       inputComponent.instance.group = this.model.formGroup;
       inputComponent.instance.config = config;
+
+      this.syncModelWithFormGroupControl(config);
+    }
+  }
+
+  private syncModelWithFormGroupControl(config): void {
+    const control = this.model.formGroup.get(config.property);
+    if (control) {
+      control
+        .valueChanges
+        .subscribe((newValue) => this.model[ config.property ] = newValue);
     }
   }
 }

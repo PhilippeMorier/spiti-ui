@@ -12,13 +12,9 @@
     </spt-form>
   </mat-card-content>
   <mat-card-actions align="end">
-    <div>{{ user.formGroup.value | json }}</div>
     <button
       name="signUp"
-      (click)="createUserWithEmailAndPassword(
-        user.formGroup.value.email,
-        user.formGroup.value.password
-      )"
+      (click)="createUserWithEmailAndPassword(user.email, user.password)"
       mat-raised-button color="primary"
     >
       SIGN UP
