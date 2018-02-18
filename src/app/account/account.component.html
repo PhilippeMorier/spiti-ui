@@ -12,6 +12,12 @@
     </ng-container>
   </mat-card-content>
   <mat-card-actions align="end">
+    <button mat-raised-button
+            *ngIf="user | async"
+            (click)="signOut()"
+    >
+      SIGN OUT
+    </button>
     <button mat-raised-button color="primary">
       SAVE
     </button>

@@ -12,7 +12,11 @@ import { SessionService } from '../session.service';
 export class AccountComponent {
   public user: Observable<User | undefined>;
 
-  public constructor(session: SessionService) {
+  public constructor(private readonly session: SessionService) {
     this.user = session.currentlySignedInUser();
+  }
+
+  public signOut(): void {
+    this.session.signOut();
   }
 }
