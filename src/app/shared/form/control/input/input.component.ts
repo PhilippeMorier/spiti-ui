@@ -5,6 +5,7 @@ import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable';
 
 import { Control, ControlConfig } from '../control';
+import { InputType } from '../input-type';
 
 @Component({
   selector: 'spt-input',
@@ -20,6 +21,7 @@ export class InputComponent implements Control, OnInit {
   public config: ControlConfig;
 
   public errorMessage: Observable<string>;
+  public inputTypes: typeof InputType = InputType;
 
   public ngOnInit(): void {
     const property = this.group.get(this.config.property);

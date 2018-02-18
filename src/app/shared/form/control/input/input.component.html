@@ -1,11 +1,20 @@
-<mat-form-field
-  [formGroup]="group"
->
-  <input matInput
-         [name]="config.property"
-         [formControlName]="config.property"
-         [placeholder]="config.placeholderText"
-         [type]="config.type"
+<div>
+  <mat-form-field
+    [formGroup]="group"
+    [ngSwitch]="config.type"
   >
-  <mat-error *ngIf="errorMessage | async as error">{{ error }}</mat-error>
-</mat-form-field>
+    <input matInput
+           [name]="config.property"
+           [formControlName]="config.property"
+           [placeholder]="config.placeholderText"
+           [type]="config.type"
+    >
+    <mat-icon matSuffix *ngSwitchCase="inputTypes.EMAIL">email</mat-icon>
+    <mat-icon matSuffix *ngSwitchCase="inputTypes.PASSWORD">vpn_key</mat-icon>
+    <mat-icon matSuffix *ngSwitchCase="inputTypes.TEL">phone</mat-icon>
+    <mat-icon matSuffix *ngSwitchCase="inputTypes.SEARCH">search</mat-icon>
+    <mat-icon matSuffix *ngSwitchCase="inputTypes.DATE">date_range</mat-icon>
+
+    <mat-error *ngIf="errorMessage | async as error">{{ error }}</mat-error>
+  </mat-form-field>
+</div>
