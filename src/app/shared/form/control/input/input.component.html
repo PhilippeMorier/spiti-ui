@@ -1,4 +1,4 @@
-<mat-input-container
+<mat-form-field
   [formGroup]="group"
 >
   <input matInput
@@ -8,4 +8,4 @@
          [type]="config.type"
   >
   <mat-error *ngIf="errorMessage | async as error">{{ error }}</mat-error>
-</mat-input-container>
+</mat-form-field>
