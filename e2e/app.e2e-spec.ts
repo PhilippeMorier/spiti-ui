@@ -1,4 +1,4 @@
-import { browser, by, element, protractor } from 'protractor';
+import { browser, by } from 'protractor';
 import { EditorPage } from './editor.po';
 import { LoginPage } from './login.po';
 
@@ -25,9 +25,7 @@ describe('spiti-ui App', () => {
   it('should display all list items', () => {
     editorPage.navigateTo();
 
-    browser.wait(
-      protractor.ExpectedConditions.presenceOf(element(by.css('ul'))),
-    );
+    browser.wait(() => browser.isElementPresent(by.css('ul')));
 
     expect(editorPage.getListItem(0).getText()).toEqual('ApplePulp');
   });
