@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material';
+import { MatIconModule, MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { InputType } from '../input-type';
@@ -16,6 +16,7 @@ describe('InputComponent', () => {
       imports: [
         BrowserAnimationsModule,
         MatInputModule,
+        MatIconModule,
         ReactiveFormsModule,
         FormsModule,
       ],
