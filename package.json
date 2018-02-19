@@ -39,7 +39,7 @@
     "babylonjs": "3.2.0-alpha6",
     "class-validator": "0.8.1",
     "core-js": "2.5.3",
-    "firebase": "4.9.0",
+    "firebase": "4.10.0",
     "promise-polyfill": "7.0.2",
     "raven-js": "3.22.1",
     "rxjs": "5.5.6",
