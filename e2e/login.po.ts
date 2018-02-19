@@ -1,6 +1,6 @@
 import { browser, by, element, ElementFinder } from 'protractor';
 
-import { AppRoute } from '../src/app/app-routing.module';
+import { AppRoute } from '../src/app/app-route.enum';
 import { BasePage } from './basePage.po';
 
 export class LoginPage extends BasePage {
@@ -13,13 +13,13 @@ export class LoginPage extends BasePage {
       .get(index);
   }
 
-  public enterName(name: string): this {
-    this.sendKeysToInput(name, 'displayName');
+  public enterEmail(email: string): this {
+    this.sendKeysToInput(email, 'email');
     return this;
   }
 
-  public enterEmail(email: string): this {
-    this.sendKeysToInput(email, 'email');
+  public enterPassword(password: string): this {
+    this.sendKeysToInput(password, 'password');
     return this;
   }
 

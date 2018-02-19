@@ -15,7 +15,12 @@
   </mat-card-content>
 
   <mat-card-actions align="end">
-    <button mat-button (click)="throwErrorForSentry()">Error</button>
+    <button mat-button
+            mat-raised-button
+            (click)="throwErrorForSentry()"
+    >
+      Error
+    </button>
     <button name="signIn"
             mat-raised-button
             color="primary"

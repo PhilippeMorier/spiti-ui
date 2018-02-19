@@ -1,6 +1,6 @@
 import { by, element, ElementFinder } from 'protractor';
 
-import { AppRoute } from '../src/app/app-routing.module';
+import { AppRoute } from '../src/app/app-route.enum';
 import { BasePage } from './basePage.po';
 
 export class EditorPage extends BasePage {

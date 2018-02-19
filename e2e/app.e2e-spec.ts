@@ -13,9 +13,9 @@ describe('spiti-ui App', () => {
   it('should display all menu links', () => {
     loginPage
       .navigateTo()
-      .clickSignIn()
-      .enterName('Philippe Morier')
-      .enterEmail('philippe.morier@test.com');
+      .enterEmail('morier.dev@outlook.com')
+      .enterPassword('morier.dev')
+      .clickSignIn();
 
     expect(loginPage.getToolbarItem(0).getText()).toEqual('Sign In');
     expect(loginPage.getToolbarItem(1).getText()).toEqual('Editor');
