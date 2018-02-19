@@ -1,4 +1,4 @@
-<ng-container *ngIf="subscriptions | async as subscriptions">
+<ng-container *ngIf="(subscriptions | async) as subscriptions">
   <p i18n>
     There {
     subscriptions.length,

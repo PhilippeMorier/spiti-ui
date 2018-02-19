@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, NgZone, ViewChild } from '@angular/core';
 import * as BABYLON from 'babylonjs';
 
 import { Key } from './key.enum';
@@ -19,10 +19,18 @@ export class BabylonComponent implements AfterViewInit {
   private camera: BABYLON.FreeCamera;
   private selectionVoxel: BABYLON.Mesh;
 
+  public constructor(private readonly zone: NgZone) {
+  }
+
   public ngAfterViewInit(): void {
     this.engine = new BABYLON.Engine(this.canvasRef.nativeElement, true);
     this.createScene(this.engine);
-    this.animate();
+
+    // Needs to run outside Angular zone due:
+    // Failed: Timed out waiting for asynchronous Angular tasks to finish after 11 seconds.
+    this.zone.runOutsideAngular(() => {
+      this.animate();
+    });
   }
 
   public createScene(engine: BABYLON.Engine): void {
