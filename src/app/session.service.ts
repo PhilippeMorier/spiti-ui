@@ -70,7 +70,7 @@ export class SessionService {
   private observeInZone<T>(observable: Observable<T>, zone: NgZone): Observable<T> {
     return Observable.create(observer => {
       const onNext = (value) => zone.run(() => observer.next(value));
-      const onError = (e) => zone.run(() => observer.error(e));
+      const onError = (error) => zone.run(() => observer.error(error));
       const onComplete = () => zone.run(() => observer.complete());
       return observable.subscribe(onNext, onError, onComplete);
     });
