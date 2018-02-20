@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-header>
     <mat-card-title>
-      <h1>Login</h1>
+      <h1>Sign In</h1>
     </mat-card-title>
   </mat-card-header>
 
@@ -9,6 +9,7 @@
     <spt-form
       [model]="user"
       [configs]="config"
+      (submit)="signIn(user.email, user.password)"
     >
     </spt-form>
     <mat-checkbox>Stay logged in</mat-checkbox>

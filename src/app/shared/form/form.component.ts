@@ -1,4 +1,7 @@
-import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  Component, ComponentFactoryResolver, EventEmitter, Input, OnInit, Output,
+  ViewChild,
+} from '@angular/core';
 import { BaseModel } from '../../model/base.model';
 
 import { Control, ControlConfig } from './control/control';
@@ -19,6 +22,9 @@ export class FormComponent implements OnInit {
   @Input()
   public configs: [ ControlConfig ];
 
+  @Output()
+  public submit: EventEmitter<void> = new EventEmitter<void>();
+
   @ViewChild(FormControlHostDirective)
   private formHost: FormControlHostDirective;
 
@@ -36,6 +42,10 @@ export class FormComponent implements OnInit {
 
       this.syncModelWithFormGroupControl(config);
     }
+  }
+
+  public emitSubmission(): void {
+    this.submit.emit();
   }
 
   private syncModelWithFormGroupControl(config): void {
