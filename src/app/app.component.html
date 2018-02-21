@@ -1,7 +1,7 @@
 <mat-toolbar>
-  <a mat-button [routerLink]="appRoutes.SignIn" i18n="Login title|Menu item">Sign In</a>
+  <a mat-button [routerLink]="appRoutes.SignIn" i18n="Sign In title|Menu item">Sign In</a>
   <a mat-button [routerLink]="appRoutes.Editor" i18n="Editor title|Menu item">Editor</a>
-  <a mat-button [routerLink]="appRoutes.SignUp" i18n="Sign-Up title|Menu item">Sign Up</a>
+  <a mat-button [routerLink]="appRoutes.SignUp" i18n="Sign Up title|Menu item">Sign Up</a>
   <span class="spacer"></span>
   <mat-icon [matTooltip]="(user | async)?.email">more_vert</mat-icon>
   <a routerLink="account"><mat-icon>account_box</mat-icon></a>
