@@ -33,6 +33,15 @@ export class SignInComponent {
     private readonly session: SessionService,
     private readonly router: Router,
   ) {
+    this.session.currentlySignedInUser()
+      .first()
+      .subscribe(
+        (user: User) => {
+          if (user) {
+            this.router.navigate([ AppRoute.Editor ]);
+          }
+        },
+      );
   }
 
   public throwErrorForSentry(): void {
@@ -44,7 +53,7 @@ export class SignInComponent {
     this.session
       .signIn(email, password)
       .subscribe(
-        () => this.router.navigate([AppRoute.Editor]),
+        () => this.router.navigate([ AppRoute.Editor ]),
         () => this.isSigningIn = false,
       );
   }
