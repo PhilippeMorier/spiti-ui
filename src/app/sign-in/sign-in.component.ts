@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
+import { AppRoute } from '../app-route.enum';
 import { User } from '../model/user.model';
 import { SessionService } from '../session.service';
 import { ControlConfig } from '../shared/form/control/control';
@@ -25,7 +27,10 @@ export class SignInComponent {
     type: InputType.PASSWORD,
   } ];
 
-  public constructor(private readonly session: SessionService) {
+  public constructor(
+    private readonly session: SessionService,
+    private readonly router: Router,
+  ) {
   }
 
   public throwErrorForSentry(): void {
@@ -33,7 +38,11 @@ export class SignInComponent {
   }
 
   public signIn(email: string, password: string): void {
-    this.session.signIn(email, password);
+    this.session
+      .signIn(email, password)
+      .subscribe(
+        () => this.router.navigate([AppRoute.Editor]),
+      );
   }
 
   public setDisplayName(): void {
