@@ -4,9 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MatButtonModule,
   MatCardModule,
-  MatCheckboxModule,
   MatIconModule,
   MatInputModule,
+  MatProgressBarModule,
   MatToolbarModule,
   MatTooltipModule,
 } from '@angular/material';
@@ -49,10 +49,10 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     HttpClientModule,
     FormsModule,
     MatCardModule,
-    MatCheckboxModule,
     MatButtonModule,
     MatIconModule,
     MatInputModule,
+    MatProgressBarModule,
     MatToolbarModule,
     MatTooltipModule,
     ReactiveFormsModule,

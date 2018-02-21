@@ -1,33 +1,40 @@
 <mat-card>
+
   <mat-card-header>
     <mat-card-title>
       <h1>Sign In</h1>
     </mat-card-title>
   </mat-card-header>
 
-  <mat-card-content>
-    <spt-form
-      [model]="user"
-      [configs]="config"
-      (submit)="signIn(user.email, user.password)"
-    >
-    </spt-form>
-    <mat-checkbox>Stay logged in</mat-checkbox>
-  </mat-card-content>
+  <ng-container *ngIf="isSigningIn; else signInForm">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </ng-container>
 
-  <mat-card-actions align="end">
-    <button mat-button
-            mat-raised-button
-            (click)="throwErrorForSentry()"
-    >
-      Error
-    </button>
-    <button name="signIn"
-            mat-raised-button
-            color="primary"
-            (click)="signIn(user.email, user.password)"
-    >
-      SIGN IN
-    </button>
-  </mat-card-actions>
+  <ng-template #signInForm>
+    <mat-card-content>
+      <spt-form
+        [model]="user"
+        [configs]="config"
+        (submit)="signIn(user.email, user.password)"
+      >
+      </spt-form>
+    </mat-card-content>
+
+    <mat-card-actions align="end">
+      <button mat-button
+              mat-raised-button
+              (click)="throwErrorForSentry()"
+      >
+        Error
+      </button>
+      <button name="signIn"
+              mat-raised-button
+              color="primary"
+              (click)="signIn(user.email, user.password)"
+      >
+        SIGN IN
+      </button>
+    </mat-card-actions>
+  </ng-template>
+
 </mat-card>

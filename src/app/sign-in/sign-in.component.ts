@@ -27,6 +27,8 @@ export class SignInComponent {
     type: InputType.PASSWORD,
   } ];
 
+  public isSigningIn: boolean = false;
+
   public constructor(
     private readonly session: SessionService,
     private readonly router: Router,
@@ -38,10 +40,12 @@ export class SignInComponent {
   }
 
   public signIn(email: string, password: string): void {
+    this.isSigningIn = true;
     this.session
       .signIn(email, password)
       .subscribe(
         () => this.router.navigate([AppRoute.Editor]),
+        () => this.isSigningIn = false,
       );
   }
 
