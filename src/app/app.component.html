@@ -1,13 +1,16 @@
 <div fxFill fxLayout="column">
 
   <header role="header">
-    <mat-toolbar>
+    <mat-toolbar color="primary">
       <a mat-button [routerLink]="appRoutes.SignIn" i18n="Sign In title|Menu item">Sign In</a>
       <a mat-button [routerLink]="appRoutes.Editor" i18n="Editor title|Menu item">Editor</a>
       <a mat-button [routerLink]="appRoutes.SignUp" i18n="Sign Up title|Menu item">Sign Up</a>
       <span class="spacer"></span>
-      <mat-icon [matTooltip]="(user | async)?.email">more_vert</mat-icon>
-      <a routerLink="account">
+      <a mat-icon-button
+         routerLink="account"
+         [matTooltip]="(user | async)?.email"
+         matTooltipPosition="left"
+      >
         <mat-icon>account_box</mat-icon>
       </a>
     </mat-toolbar>
