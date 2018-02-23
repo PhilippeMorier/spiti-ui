@@ -2,6 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatButtonModule, MatCardModule, MatCheckboxModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
 import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
 
@@ -35,6 +36,7 @@ describe('SignInComponent', () => {
           MatButtonModule,
           MatCardModule,
           MatCheckboxModule,
+          RouterTestingModule,
         ],
         providers: [
           { provide: SessionService, useValue: mockSessionService },
