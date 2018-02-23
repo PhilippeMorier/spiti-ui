@@ -48,6 +48,13 @@ export class BabylonComponent implements AfterViewInit {
       this.scene,
     );
 
+    new BABYLON.SSAORenderingPipeline(
+      'ssaoPipeline',
+      this.scene,
+      0.85,
+      [ this.camera ],
+    );
+
     this.addVoxel(BABYLON.Vector3.Zero());
     this.selectionVoxel = this.addVoxel(BABYLON.Vector3.Zero(), SELECTION_VOXEL);
     this.selectionVoxel.isVisible = false;
