@@ -15,7 +15,7 @@ import { InputComponent } from '../shared/form/control/input/input.component';
 })
 export class SignUpComponent {
   public user: User = new User();
-  public config: [ ControlConfig ] = [ {
+  public config: ControlConfig[] = [ {
     component: InputComponent,
     placeholderText: 'Email',
     property: 'email',
