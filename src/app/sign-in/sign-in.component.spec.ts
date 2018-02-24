@@ -5,7 +5,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
+import { AppRoute } from '../app-route.enum';
 
+import { EditorComponent } from '../editor/editor.component';
+import { EditorModule } from '../editor/editor.module';
 import { SessionService } from '../session.service';
 import { SignInComponent } from './sign-in.component';
 
@@ -30,19 +33,23 @@ describe('SignInComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        declarations: [ SignInComponent ],
-        imports: [
-          BrowserAnimationsModule,
-          MatButtonModule,
-          MatCardModule,
-          MatCheckboxModule,
-          RouterTestingModule,
-        ],
-        providers: [
-          { provide: SessionService, useValue: mockSessionService },
-        ],
-        schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-      })
+      declarations: [ SignInComponent ],
+      imports: [
+        BrowserAnimationsModule,
+        EditorModule,
+        MatButtonModule,
+        MatCardModule,
+        MatCheckboxModule,
+        RouterTestingModule.withRoutes(
+          [ {path: AppRoute.Editor, component: EditorComponent} ],
+        ),
+
+      ],
+      providers: [
+        {provide: SessionService, useValue: mockSessionService},
+      ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+    })
       .compileComponents();
   }));
 
