@@ -17,14 +17,14 @@ module.exports = function (config: karma.Config): void {
     },
     autoWatch: true,
     basePath: '',
-    browsers: ['Chrome'],
+    browsers: [ 'Chrome' ],
     client: {
       clearContext: false, // leave Jasmine Spec Runner output visible in browser
     },
     colors: true,
     coverageIstanbulReporter: {
       fixWebpackSourcePaths: true,
-      reports: ['html', 'lcovonly'],
+      reports: [ 'html', 'lcovonly' ],
     },
     files: [
       {pattern: './src/test.ts', watched: false},
@@ -34,10 +34,10 @@ module.exports = function (config: karma.Config): void {
         watched: false,
       },
     ],
-    frameworks: ['jasmine', '@angular/cli'],
+    frameworks: [ 'jasmine', '@angular/cli' ],
     logLevel: config.LOG_INFO,
     mime: {
-      'text/x-typescript': ['ts', 'tsx'],
+      'text/x-typescript': [ 'ts', 'tsx' ],
     },
     plugins: [
       karmaJasmine,
@@ -50,11 +50,11 @@ module.exports = function (config: karma.Config): void {
     ],
     port: 9876,
     preprocessors: {
-      './src/test.ts': ['@angular/cli'],
+      './src/test.ts': [ '@angular/cli' ],
     },
     reporters: config.angularCli && config.angularCli.codeCoverage
-      ? ['progress', 'coverage-istanbul']
-      : ['progress', 'kjhtml', 'mocha'],
+      ? [ 'mocha', 'coverage-istanbul' ]
+      : [ 'mocha', 'kjhtml' ],
     singleRun: false,
   });
 };
