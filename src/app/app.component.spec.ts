@@ -4,6 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { Observable } from 'rxjs/Observable';
 
 import { AppComponent } from './app.component';
+import { LetDirective } from './core/let.directive';
 import { User } from './model/user.model';
 import { SessionService } from './session.service';
 
@@ -31,6 +32,7 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
+        LetDirective,
       ],
       imports: [
         RouterTestingModule,
@@ -56,9 +58,9 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render menu links', () => {
+  it('should render only editor menu links when signed in', () => {
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelectorAll('mat-toolbar a').item(0).textContent).toEqual('Sign In');
-    expect(compiled.querySelectorAll('mat-toolbar a').item(1).textContent).toEqual('Editor');
+    expect(compiled.querySelectorAll('mat-toolbar a').item(0).textContent)
+      .toEqual('Editor');
   });
 });
