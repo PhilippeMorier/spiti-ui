@@ -21,6 +21,7 @@ import { environment } from '../environments/environment-source';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './core/auth.guard';
+import { LetDirective } from './core/let.directive';
 import { Fullstory } from './integrations/fullstory';
 import { Sentry, SENTRY_PROVIDERS } from './integrations/sentry';
 import { SessionService } from './session.service';
@@ -39,6 +40,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     FormComponent,
     InputComponent,
     FormControlHostDirective,
+    LetDirective,
   ],
   entryComponents: [ InputComponent ],
   imports: [
