@@ -20,6 +20,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment-source';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthGuard } from './core/auth.guard';
 import { Fullstory } from './integrations/fullstory';
 import { Sentry, SENTRY_PROVIDERS } from './integrations/sentry';
 import { SessionService } from './session.service';
@@ -60,6 +61,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     ReactiveFormsModule,
   ],
   providers: [
+    AuthGuard,
     Fullstory,
     ...SENTRY_PROVIDERS,
     { provide: ErrorHandler, useClass: Sentry },
