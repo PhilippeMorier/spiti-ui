@@ -5,6 +5,7 @@
                  class="mat-elevation-z4"
                  *sptLet="(user | async) as user"
     >
+      <span>Spiti UI</span>
       <span class="spacer"></span>
       <a mat-button *ngIf="!user" [routerLink]="appRoutes.SignIn" i18n="Sign In title|Menu item">Sign In</a>
       <a mat-button *ngIf="user" [routerLink]="appRoutes.Editor" i18n="Editor title|Menu item">Editor</a>
