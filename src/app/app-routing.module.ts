@@ -7,10 +7,10 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 
 const routes: Routes = [
   { path: '', redirectTo: AppRoute.SignIn, pathMatch: 'full' },
-  { path: AppRoute.SignIn, component: SignInComponent },
-  { path: AppRoute.SignUp, component: SignUpComponent },
-  { path: AppRoute.Editor, loadChildren: './editor/editor.module#EditorModule' },
-  { path: AppRoute.Account, loadChildren: './account/account.module#AccountModule' },
+  { path: AppRoute.SignIn as string, component: SignInComponent },
+  { path: AppRoute.SignUp as string, component: SignUpComponent },
+  { path: AppRoute.Editor as string, loadChildren: './editor/editor.module#EditorModule' },
+  { path: AppRoute.Account as string, loadChildren: './account/account.module#AccountModule' },
 ];
 
 @NgModule({

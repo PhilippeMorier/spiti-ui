@@ -41,7 +41,7 @@ describe('SignInComponent', () => {
         MatCardModule,
         MatCheckboxModule,
         RouterTestingModule.withRoutes(
-          [ {path: AppRoute.Editor, component: EditorComponent} ],
+          [ {path: AppRoute.Editor as string, component: EditorComponent} ],
         ),
 
       ],
