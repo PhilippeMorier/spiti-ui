@@ -18,8 +18,8 @@ describe('spiti-ui App', () => {
       .enterPassword('morier.dev')
       .clickSignIn();
 
-    expect(loginPage.getToolbarItem(0).getText()).toEqual('Sign In');
-    expect(loginPage.getToolbarItem(1).getText()).toEqual('Editor');
+    expect(loginPage.getToolbarItem(0).getText()).toEqual('Editor');
+    expect(loginPage.getToolbarItem(1).getText()).toEqual('account_box');
   });
 
   it('should display all list items', () => {
